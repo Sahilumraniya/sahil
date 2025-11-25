@@ -1,65 +1,160 @@
-import Image from "next/image";
+import {
+  Code2, Globe, Zap, Layout, Server, Cpu, Database, Briefcase,
+  Award, Package, Github, ExternalLink, ArrowRight, CheckCircle2,
+  Loader2, Send, Linkedin, Mail, Download, Eye, Printer, Star
+} from 'lucide-react';
+import ClientShell from "@/components/client-shell"; // We will create this next
+
+/* --- DATA CONSTANTS (Server Side Data) --- */
+const RESUME_DATA = {
+  name: "Sahil Umraniya",
+  role: "Full-Stack Engineer • AI Specialist",
+  summary: "Full-stack developer with 1.5+ years focused on Generative AI and high-performance backends. Skilled in Node.js, Python, React, Next.js. Built a Redis-backed async job queue that improved API responsiveness by 30%. Experienced with LLM integrations, event-driven systems, and cloud (Firebase, AWS). Oracle Generative AI certified."
+};
+
+const EXPERIENCES = [
+  {
+    title: "Software Developer",
+    company_name: "Smartters Software",
+    date: "Feb 2024 - Present",
+    points: [
+      "Optimized database access and API logic, cutting average response times by 30%+ and improving UX at scale.",
+      "Built internal toolkit (Retro Form & Retro Table) to automate form/table generation, reducing boilerplate by up to 50%.",
+      "Designed a Redis-backed async job queue for Feathers.js/Express with batch, delay, and event-driven tracking.",
+      "Delivered multilingual support, scheduled tasks, and real-time complaint tracking."
+    ],
+  },
+];
+
+const PROJECTS = [
+  {
+    title: "Retro Form & Table",
+    tech: ["NPM", "React", "AI"],
+    tag: "Tools",
+    desc: "AI-Powered SaaS tool accelerating UI creation. Published core as public NPM package.",
+    github: "https://www.npmjs.com/package/retro-table",
+    host: "https://www.npmjs.com/package/retro-table",
+    challenge: "Abstracting complex validation logic.",
+    featured: true
+  },
+  {
+    title: "Get Hired Marketplace",
+    tech: ["Next.js", "Firebase", "GenAI"],
+    tag: "Full Stack",
+    desc: "Two-sided freelance marketplace with AI resume parsing.",
+    github: "https://github.com/Sahilumraniya",
+    host: "https://gethiredat.vercel.app",
+    challenge: "Mapping unstructured resume data.",
+    featured: true
+  },
+  {
+    title: "Redis Queue Processor",
+    tech: ["Redis", "Node.js", "System Design"],
+    tag: "Backend",
+    desc: "Production-grade async processing system for batch jobs.",
+    github: "https://github.com/sahilumraniya",
+    host: "#",
+    challenge: "Ensuring idempotency in distributed systems.",
+    featured: true
+  },
+  {
+    title: "Swap & Share",
+    tech: ["MERN", "AWS S3"],
+    tag: "Full Stack",
+    desc: "Resource swapping platform with secure file handling.",
+    github: "https://github.com/Sahilumraniya/ShwapNShare/",
+    host: "https://swapnshare.vercel.app/",
+    challenge: "Real-time state synchronization."
+  },
+  {
+    title: "AI Maze Solver",
+    tech: ["Python", "Pathfinding"],
+    tag: "AI/ML",
+    desc: "Intelligent bot solving complex mazes using A* algorithm.",
+    github: "https://github.com/Sahilumraniya/Maze_Game",
+    host: "#",
+    challenge: "Optimizing heuristics."
+  },
+  {
+    title: "Learnfinity",
+    tech: ["Next.js", "Tailwind"],
+    tag: "Full Stack",
+    desc: "Educational platform for seamless learning experiences.",
+    github: "https://github.com/Sahilumraniya/Learnfinity",
+    host: "https://learnfinity.vercel.app/",
+    challenge: "SEO optimization."
+  },
+];
+
+const SKILL_CATEGORIES = [
+  {
+    title: "Frontend Core",
+    icon: <Layout className="text-blue-500" />,
+    bg: "bg-blue-500/10 dark:bg-blue-500/10",
+    border: "border-blue-500/20",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind", "HTML5", "CSS3", "MUI"]
+  },
+  {
+    title: "Backend & DB",
+    icon: <Server className="text-green-500" />,
+    bg: "bg-green-500/10 dark:bg-green-500/10",
+    border: "border-green-500/20",
+    skills: ["Node.js", "Express", "Redis", "MongoDB", "PostgreSQL", "Feathers", "Spring Boot"]
+  },
+  {
+    title: "AI & Data",
+    icon: <Cpu className="text-purple-500" />,
+    bg: "bg-purple-500/10 dark:bg-purple-500/10",
+    border: "border-purple-500/20",
+    skills: ["Python", "GenAI", "Prompt Eng.", "NumPy", "Pandas", "Scikit-learn"]
+  },
+  {
+    title: "DevOps & Tools",
+    icon: <Globe className="text-orange-500" />,
+    bg: "bg-orange-500/10 dark:bg-orange-500/10",
+    border: "border-orange-500/20",
+    skills: ["Docker", "AWS", "Git", "Firebase", "Postman"]
+  }
+];
+
+const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "Optimizing Feathers.js for High Scale",
+    excerpt: "How I designed a Redis-backed job queue to handle 10k+ daily requests and reduce API latency by 30%.",
+    date: "Nov 2024",
+    readTime: "5 min read",
+    tag: "Backend",
+    slug: "#"
+  },
+  {
+    id: 2,
+    title: "Building 'Retro Form': From Idea to NPM Package",
+    excerpt: "The engineering challenges of abstracting complex UI logic into a reusable React hook and publishing it for the community.",
+    date: "Oct 2024",
+    readTime: "7 min read",
+    tag: "Engineering",
+    slug: "#"
+  },
+  {
+    id: 3,
+    title: "Integrating GenAI into Legacy Systems",
+    excerpt: "Lessons learned from adding AI resume parsing to the 'Get Hired' platform without breaking existing flows.",
+    date: "Sep 2024",
+    readTime: "6 min read",
+    tag: "AI/ML",
+    slug: "#"
+  }
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <ClientShell
+      resumeData={RESUME_DATA}
+      experiences={EXPERIENCES}
+      projects={PROJECTS}
+      skillCategories={SKILL_CATEGORIES}
+      blogPosts={BLOG_POSTS}
+    />
   );
 }
