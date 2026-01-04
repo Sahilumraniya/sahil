@@ -2,6 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { link } from 'fs';
 import { Award, BookOpen, ScrollText } from 'lucide-react';
 
 const EDUCATION = [
@@ -21,20 +22,22 @@ const CERTIFICATIONS = [
         issuer: "Oracle",
         date: "2024",
         icon: Award,
-        color: "orange"
+        color: "orange",
+        link: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=1BBB15E94D645DE45156935112528F197168D2E99FF1C73FBB5D6779153A7E32"
     },
     {
         title: "AI/ML Certification",
         issuer: "SAP",
         date: "2023",
         icon: Award,
-        color: "blue"
+        color: "blue",
+        link: "https://codeunnati.edunetfoundation.com/verify-certificate/CU24_8889"
     }
 ];
 
 export default function EducationSection() {
     return (
-        <section className="py-20 bg-white dark:bg-black">
+        <section className="py-24">
             <div className="container mx-auto px-4 sm:px-6">
                 <div className="flex flex-col md:flex-row gap-12">
 
@@ -83,6 +86,7 @@ export default function EducationSection() {
                                     key={idx}
                                     whileHover={{ scale: 1.02 }}
                                     className="p-6 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-4"
+                                    onClick={() => window.open(cert.link, '_blank')}
                                 >
                                     <div className={`p-3 rounded-full bg-${cert.color}-100 dark:bg-${cert.color}-900/20 text-${cert.color}-600`}>
                                         <cert.icon size={20} />
