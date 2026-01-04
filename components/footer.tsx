@@ -5,7 +5,7 @@ import Link from "next/link";
 const SOCIAL_LINKS = [
     { icon: Github, href: "https://github.com/sahilumraniya", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/sahilumraniya", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Twitter, href: "https://x.com/2Umraniya", label: "Twitter" },
     { icon: Mail, href: "mailto:sahilumraniya9512@gmail.com", label: "Email" },
 ];
 
