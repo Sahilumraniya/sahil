@@ -128,6 +128,18 @@ export default function RootLayout({
           })
         }}
       />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HK5K15GTV"></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-2HK5K15GTV');
+          `,
+        }}
+      />
     </html>
   );
 }
