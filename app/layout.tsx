@@ -81,6 +81,8 @@ export default function RootLayout({
         {/* <meta name="google-site-verification" content="EZCth_jgoQOWNUQ4Lab36S8Noqo9qfq8D-8IqIr8HSc" /> */}
       </head>
       <body className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR44ZS7M"
+          height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -138,6 +140,17 @@ export default function RootLayout({
 
             gtag('config', 'G-2HK5K15GTV');
           `,
+        }}
+      />
+      <Script
+        id="gtm-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NR44ZS7M');`,
         }}
       />
     </html>
