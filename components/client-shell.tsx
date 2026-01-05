@@ -112,7 +112,7 @@ export default function ClientShell() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px] dark:opacity-20"></div>
             </div>
 
-            <main className="pt-32 w-full display:flex flex-col items-center justify-center sm:px-6 px-4">
+            <main className="pt-32 w-full display:flex flex-col items-center justify-center px-4">
                 <div className="space-y-32">
                     <section className="container mx-auto px-4 sm:px-6 text-center">
                         <FadeIn>

@@ -91,7 +91,7 @@ export default function ImpactStats() {
                                     {/* Value */}
                                     <div className="relative z-10">
                                         <div className="text-5xl md:text-6xl font-bold mb-2 tracking-tight text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                                            <Counter value={stat.value} />
+                                            <Counter value={stat.value} className='sm:text-6xl text-5xl' />
                                         </div>
                                     </div>
 

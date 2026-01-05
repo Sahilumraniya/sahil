@@ -86,18 +86,26 @@ export default function ResumePage() {
 
                     <div className="flex flex-col gap-3 w-full">
                         <a
-                            href="/SahilUmraniya_Resume.pdf"
+                            // href="https://drive.google.com/file/d/1M_sN7FRI2ad4bBiU4fPJ73vqcVQ_EI_M/view?usp=sharing"
                             download
                             className="flex items-center justify-center gap-2 px-6 py-3 bg-violet-600 text-white rounded-full font-semibold hover:bg-violet-700 transition-all shadow-lg hover:shadow-violet-500/25"
+                            onClick={() => {
+                                const link = document.createElement('a');
+                                link.href = 'https://drive.google.com/uc?export=download&id=1M_sN7FRI2ad4bBiU4fPJ73vqcVQ_EI_M';
+                                link.download = 'Sahil_Umraniya_Resume.pdf';
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                            }}
                         >
                             <Download size={18} /> Download PDF
                         </a>
-                        <button
+                        {/* <button
                             onClick={() => window.print()}
                             className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 transition-colors"
                         >
                             <Printer size={18} /> Print / Save PDF
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

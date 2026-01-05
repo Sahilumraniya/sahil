@@ -56,8 +56,8 @@ export const metadata: Metadata = {
 
   // 4. VERIFICATION (This is where you paste the real codes)
   verification: {
-    google: "Paste-Your-Google-Code-Here",
-    yandex: "Paste-Yandex-Code-Here", // Optional, mostly for Russia/Eastern Europe
+    google: "EZCth_jgoQOWNUQ4Lab36S8Noqo9qfq8D-8IqIr8HSc",
+    yandex: "108328dc714f9838", // Optional, mostly for Russia/Eastern Europe
   },
 
   // 5. REMOVED: facebook, itunes, appLinks (unless you actually have a mobile app)
@@ -76,9 +76,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning >
       <head>
-        <meta name="google-site-verification" content="EZCth_jgoQOWNUQ4Lab36S8Noqo9qfq8D-8IqIr8HSc" />
+        {/* <meta name="google-site-verification" content="EZCth_jgoQOWNUQ4Lab36S8Noqo9qfq8D-8IqIr8HSc" /> */}
       </head>
       <body className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}>
         <ThemeProvider
