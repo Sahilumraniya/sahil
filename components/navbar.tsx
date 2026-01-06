@@ -9,7 +9,7 @@ import Image from "next/image";
 // --- CONFIGURATION ---
 // 1. Paste your Google Drive Link here.
 // 2. IMPORTANT: On Google Drive, click Share -> General Access -> "Anyone with the link" -> "Viewer"
-const RESUME_LINK = "https://drive.google.com/file/d/1M_sN7FRI2ad4bBiU4fPJ73vqcVQ_EI_M/view?usp=sharing";
+// const RESUME_LINK = "https://drive.google.com/file/d/1ihC8bX6SDFLF4qUDmk42WglKN7jy_i2t/view?usp=sharing";
 
 const NAV_LINKS = [
     { href: "/", label: "Home" },
@@ -61,15 +61,13 @@ export function Navbar() {
                     <div className="flex items-center gap-2 sm:gap-3">
 
                         {/* RESUME BUTTON (Desktop) */}
-                        <a
-                            href={RESUME_LINK}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            href={'/resume'}
                             className="hidden sm:flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                         >
                             <FileText size={18} />
                             <span>Resume</span>
-                        </a>
+                        </Link>
 
                         {/* HIRE ME BUTTON (Primary) */}
                         <Link href="/contact-us" className="hidden sm:flex px-6 py-2.5 text-sm bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold hover:opacity-90 transition-all hover:scale-105">
@@ -99,15 +97,15 @@ export function Navbar() {
                             <div className="h-px bg-slate-200 dark:bg-white/10 my-2" />
 
                             {/* MOBILE RESUME BUTTON */}
-                            <a
-                                href={RESUME_LINK}
+                            <Link
+                                href={'/resume'}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="w-full text-center py-3 rounded-2xl border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 font-semibold hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
                             >
                                 <FileText size={18} /> Resume
-                            </a>
+                            </Link>
 
                             {/* MOBILE HIRE ME BUTTON */}
                             <Link
