@@ -24,13 +24,16 @@ export const metadata: Metadata = {
     "Sahil Umraniya",
     "Full Stack Engineer",
     "Next.js Developer",
-    "MERN Stack",
-    "Generative AI",
-    "Web Developer India",
+    "MERN Stack Developer",
     "React Specialist",
-    "Freelance Developer",
-    "Software Engineer",
-    "Ahmedabad Developer" // Local SEO is easier to rank for initially
+    "Generative AI Expert",
+    "Software Engineer Ahmedabad",
+    "Freelance Web Developer India",
+    "TypeScript",
+    "Node.js",
+    "MongoDB",
+    "Portfolio",
+    "Web Application Development"
   ],
 
   // 2. SELF-REFERENCE (Canonical is crucial)
@@ -60,6 +63,14 @@ export const metadata: Metadata = {
     yandex: "108328dc714f9838", // Optional, mostly for Russia/Eastern Europe
   },
 
+  twitter: {
+    card: "summary_large_image",
+    title: "Sahil Umraniya | Full Stack & AI Developer",
+    description: "Hire Sahil Umraniya for cutting-edge web development. Specialist in Next.js, React, and Generative AI.",
+    images: ["/og-image.png"], // Re-use your OG image
+    creator: "@2Umraniya", // Uncomment and add your handle if you have one
+  },
+
   // 5. REMOVED: facebook, itunes, appLinks (unless you actually have a mobile app)
   robots: {
     index: true,
@@ -67,6 +78,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
