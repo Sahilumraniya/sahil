@@ -1,46 +1,107 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    Send,
-    Loader2,
-    CheckCircle2,
     Mail,
-    MapPin,
     Linkedin,
     Github,
     Terminal,
     ArrowRight,
-    Clock
+    Phone,
+    Instagram,
+    Twitter
 } from 'lucide-react';
 import { WorkflowSection } from '@/components/WorkflowSection';
 import { ContactForm } from '@/components/Contact';
 
-// --- Sub-Components ---
+// --- DATA ---
+const CONTACT_DETAILS = [
+    {
+        icon: Phone,
+        label: "Drop me a line",
+        value: "+91 93272 01427",
+        href: "tel:+919327201427"
+    },
+    {
+        icon: Mail,
+        label: "Email Me",
+        value: "sahilumraniya9512@gmail.com",
+        href: "mailto:sahilumraniya9512@gmail.com"
+    },
+    {
+        icon: Linkedin,
+        label: "Connect Professionally",
+        value: "in/sahilumraniya",
+        href: "https://linkedin.com/in/sahilumraniya"
+    },
+    {
+        icon: Instagram,
+        label: "Connect Socially",
+        value: "@sahilumraniya_",
+        href: "https://www.instagram.com/sahilumraniya_/"
+    },
+    {
+        icon: Github,
+        label: "Check my Code",
+        value: "github.com/sahilumraniya",
+        href: "https://github.com/sahilumraniya"
+    },
+    {
+        icon: Twitter,
+        label: "Follow me on X",
+        value: "@2umraniya",
+        href: "https://www.twitter.com/2umraniya"
+    }
+];
 
-const ContactItem = ({ icon: Icon, label, value, href, delay }: any) => (
+// --- COMPONENTS ---
+
+const ContactCard = ({ icon: Icon, label, value, href, index }: any) => (
     <motion.a
         href={href}
-        target={href.startsWith('http') ? '_blank' : undefined}
+        target={href?.startsWith('http') ? '_blank' : undefined}
         rel="noreferrer"
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ delay, duration: 0.5 }}
-        className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:border-violet-500/30 hover:bg-violet-500/5 transition-all duration-300 group cursor-pointer"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 * index, duration: 0.5 }}
+        className="flex items-center gap-4 p-4 rounded-2xl 
+                   bg-white dark:bg-white/5 backdrop-blur-sm
+                   border border-slate-200 dark:border-white/10 
+                   hover:border-violet-500/30 hover:bg-violet-500/5 hover:shadow-lg dark:hover:shadow-none
+                   transition-all duration-300 group cursor-pointer
+                   min-w-0 w-full"
     >
-        <div className="p-3 rounded-full bg-white dark:bg-white/10 text-slate-600 dark:text-slate-300 group-hover:text-violet-500 group-hover:scale-110 transition-all shadow-sm">
+        {/* Icon Container */}
+        <div className="p-3 rounded-full bg-slate-100 dark:bg-white/10 
+                        text-slate-600 dark:text-slate-300 
+                        group-hover:text-violet-600 dark:group-hover:text-violet-400 
+                        group-hover:scale-110 transition-all shadow-sm shrink-0">
             <Icon size={20} />
         </div>
-        <div>
-            <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">{label}</p>
-            <p className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">{value}</p>
+
+        {/* Text Content */}
+        <div className="flex-1 min-w-0 overflow-hidden">
+            <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 
+                          uppercase tracking-wider mb-0.5 truncate">
+                {label}
+            </p>
+            <p className="text-sm font-semibold text-slate-900 dark:text-white 
+                          group-hover:text-violet-600 dark:group-hover:text-violet-400 
+                          transition-colors truncate">
+                {value}
+            </p>
         </div>
-        {href && <ArrowRight className="ml-auto text-slate-300 group-hover:text-violet-500 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all" size={16} />}
+
+        {/* Arrow Action */}
+        <ArrowRight
+            className="text-slate-300 group-hover:text-violet-500 
+                       -translate-x-2 opacity-0 group-hover:opacity-100 
+                       group-hover:translate-x-0 transition-all shrink-0"
+            size={16}
+        />
     </motion.a>
 );
-
-// --- Main Section ---
 
 export default function ContactUsSection() {
     return (
@@ -52,31 +113,33 @@ export default function ContactUsSection() {
 
                 <div className="container mx-auto px-4 sm:px-6 relative z-10">
 
-                    {/* KEY CHANGE: items-stretch ensures both columns are equal height */}
-                    <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch">
+                    {/* Main Layout Grid */}
+                    <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
 
-                        {/* LEFT SIDE */}
-                        {/* KEY CHANGE: flex flex-col to distribute content vertically */}
-                        <div className="lg:w-5/12 pt-4 flex flex-col">
+                        {/* LEFT SIDE: Info & Grid */}
+                        <div className="lg:w-5/12 flex flex-col h-full">
+
+                            {/* Status Badge */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold border border-green-500/20 mb-6"
+                                className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20 mb-6"
                             >
                                 <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                                 </span>
                                 Available for new projects
                             </motion.div>
 
+                            {/* Headline */}
                             <motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
+                                className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.1] mb-6"
                             >
                                 Ready to build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">extraordinary?</span>
                             </motion.h2>
@@ -86,74 +149,52 @@ export default function ContactUsSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed"
+                                className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed"
                             >
                                 Whether you need a high-performance **Next.js** web app, a scalable **Node.js** backend, or AI integration using **GenAI**, I am here to help.
-                                <br /><br />
-                                Currently based in India, working with clients globally.
                             </motion.p>
-                            {/* Tech Badge Strip */}
-                            {/* KEY CHANGE: mt-auto pushes this to the bottom, aligning with form bottom */}
-                            <div className="space-y-4 my-8">
-                                <ContactItem
-                                    icon={Mail}
-                                    label="Drop me a line"
-                                    value="sahilumraniya9512@gmail.com"
-                                    href="mailto:sahilumraniya9512@gmail.com"
-                                    delay={0.3}
-                                />
-                                <ContactItem
-                                    icon={Linkedin}
-                                    label="Connect Professionally"
-                                    value="linkedin.com/in/sahilumraniya"
-                                    href="https://linkedin.com/in/sahilumraniya"
-                                    delay={0.4}
-                                />
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <ContactItem
-                                        icon={Github}
-                                        label="Check my Code"
-                                        value="github.com/sahilumraniya"
-                                        href="https://github.com/sahilumraniya"
-                                        delay={0.5}
-                                    />
-                                    <ContactItem
-                                        icon={MapPin}
-                                        label="Based In"
-                                        value="Ahmedabad, Gujarat, India"
-                                        href="#"
-                                        delay={0.6}
-                                    />
-                                </div>
-                            </div>
-                        </div>
 
+                            {/* Contact Grid (Bento Style) */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                {CONTACT_DETAILS.map((item, idx) => (
+                                    <ContactCard key={idx} index={idx} {...item} />
+                                ))}
+                            </div>
+
+                            {/* Tech Badge Footer (Anchored Bottom) */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="mt-auto pt-6 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-4 text-slate-400"
+                            >
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                                    Powering Innovation With:
+                                </span>
+                                <div className="flex items-center gap-3">
+                                    <Terminal size={16} className="text-violet-500" />
+                                    <span className="font-mono text-xs font-medium text-slate-600 dark:text-slate-300">
+                                        MERN • Next.js • GenAI • Cloud
+                                    </span>
+                                </div>
+                            </motion.div>
+                        </div>
 
                         {/* RIGHT SIDE: Form */}
-                        {/* KEY CHANGE: h-full ensures the wrapper takes full height provided by items-stretch */}
                         <motion.div
-                            initial={{ opacity: 0, x: 50 }}
+                            initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.2, duration: 0.8 }}
-                            className="lg:w-7/12 w-full h-full"
+                            transition={{ delay: 0.3, duration: 0.8 }}
+                            className="lg:w-7/12 w-full h-full flex flex-col"
                         >
-                            <ContactForm />
+                            {/* Passing a class to ensure the form takes full height if needed */}
+                            <div className="h-full">
+                                <ContactForm />
+                            </div>
                         </motion.div>
                     </div>
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.8 }}
-                        className="mt-auto pt-8 border-t border-slate-200 dark:border-white/10 flex items-center gap-6 text-slate-400"
-                    >
-                        <span className="text-xs font-semibold uppercase tracking-widest">Specialized In:</span>
-                        <div className="flex gap-4">
-                            <Terminal size={20} className="hover:text-slate-900 dark:hover:text-white transition-colors" />
-                            <div className="h-5 w-[1px] bg-slate-300 dark:bg-white/20"></div>
-                            <span className="font-mono text-xs text-slate-500 dark:text-slate-400">MERN Stack • Next.js • GenAI • Cloud</span>
-                        </div>
-                    </motion.div>
+
                 </div>
             </section>
             <WorkflowSection />

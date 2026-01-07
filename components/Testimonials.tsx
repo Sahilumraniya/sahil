@@ -8,7 +8,7 @@ const TESTIMONIALS = [
     {
         text: "Sahil transformed our legacy backend into a high-performance Node.js architecture. The API response time dropped by 60%. Highly recommended.",
         author: "Project Manager",
-        role: "Smartters Software",
+        role: "Corporate Client",
         initials: "PM"
     },
     {
