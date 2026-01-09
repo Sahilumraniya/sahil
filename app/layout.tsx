@@ -18,7 +18,11 @@ export const metadata: Metadata = {
     template: "%s | Sahil Umraniya" // Useful for other pages like "Blog | Sahil Umraniya"
   },
   description: "Portfolio of Sahil Umraniya - Full Stack Engineer specializing in Next.js, MERN Stack, and Generative AI solutions.",
-
+  icons: {
+    icon: "/logo.png", // The path to your image in app/ or public/
+    shortcut: "/logo.png",
+    apple: "/logo.png", // Optional: for iPhones
+  },
   // 1. CLEANER KEYWORDS
   keywords: [
     "Sahil Umraniya",
