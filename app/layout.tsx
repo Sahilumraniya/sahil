@@ -3,9 +3,6 @@ import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import ContactUsSection from "@/components/Contact";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -107,18 +104,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
           {children}
-          <ContactUsSection />
-          <Footer />
         </ThemeProvider>
         <GoogleAnalytics gaId="G-2HK5K15GTV" />
-      </body>
-      <Script
-        id="tawk-widget"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+        <Script
+          id="tawk-widget"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             var Tawk_API = Tawk_API || { }, Tawk_LoadStart = new Date();
             (function () {
               var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
@@ -129,48 +122,49 @@ export default function RootLayout({
               s0.parentNode.insertBefore(s1, s0);
             })();
           `,
-        }}
-      />
-      {/* Inside your page component */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Sahil Umraniya",
-            url: "https://sahilumraniya.dev",
-            jobTitle: "Full Stack Engineer",
-            sameAs: [
-              "https://github.com/sahilumraniya",
-              "https://linkedin.com/in/sahilumraniya"
-            ]
-          })
-        }}
-      />
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HK5K15GTV"></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
+          }}
+        />
+        {/* Inside your page component */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Sahil Umraniya",
+              url: "https://sahilumraniya.dev",
+              jobTitle: "Full Stack Engineer",
+              sameAs: [
+                "https://github.com/sahilumraniya",
+                "https://linkedin.com/in/sahilumraniya"
+              ]
+            })
+          }}
+        />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HK5K15GTV"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'G-2HK5K15GTV');
           `,
-        }}
-      />
-      <Script
-        id="gtm-script"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+          }}
+        />
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NR44ZS7M');`,
-        }}
-      />
+          }}
+        />
+      </body>
     </html>
   );
 }

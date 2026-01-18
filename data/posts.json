@@ -1,0 +1,46 @@
+[
+  {
+    "id": "16cf248f-de6a-4cea-b3a4-51a579779d70",
+    "title": "Test Blog via curl",
+    "slug": "test-blog-curl",
+    "excerpt": "Testing the API",
+    "content": "# Hello World\nThis is a test.",
+    "tags": [
+      "Test"
+    ],
+    "date": "Jan 2026",
+    "readTime": "1 min read",
+    "likes": 0,
+    "views": 2
+  },
+  {
+    "id": "1",
+    "slug": "optimizing-feathers-for-scale",
+    "title": "Optimizing Feathers.js for High Scale",
+    "excerpt": "How I designed a Redis-backed job queue to handle 10k+ daily requests and reduce API latency by 30%.",
+    "content": "# Optimizing Feathers.js for High Scale\n\n## Introduction\n\nWhen scaling an application, one of the first bottlenecks you often hit is the job processing queue. In this post, I'll walk you through how we handled 10k+ daily requests.\n\n### The Problem\n\nOur original implementation was using a simple in-memory queue...",
+    "date": "Nov 2024",
+    "readTime": "5 min read",
+    "tags": [
+      "Backend",
+      "Node.js"
+    ],
+    "likes": 120,
+    "views": 452
+  },
+  {
+    "id": "2",
+    "slug": "building-retro-form",
+    "title": "Building 'Retro Form': From Idea to NPM Package",
+    "excerpt": "The engineering challenges of abstracting complex UI logic into a reusable React hook and publishing it for the community.",
+    "content": "# Building Retro Form\n\nCreating an NPM package is more than just exporting a function. It's about designing an API that developers love to use.\n\n## API Design\n\nWe wanted the API to be declarative...",
+    "date": "Oct 2024",
+    "readTime": "7 min read",
+    "tags": [
+      "Engineering",
+      "React"
+    ],
+    "likes": 85,
+    "views": 320
+  }
+]

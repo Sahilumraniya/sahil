@@ -1,32 +1,40 @@
 // components/FAQSection.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 
-const faqs = [
-    {
-        question: "What is your preferred Tech Stack?",
-        answer: "I specialize in the MERN Stack (MongoDB, Express, React, Node.js). For modern web apps, I heavily use Next.js with TypeScript and Tailwind CSS. For AI integrations, I use Python, LangChain, and OpenAI/Hugging Face models."
-    },
-    {
-        question: "Do you work with clients in different time zones?",
-        answer: "Yes! I am based in Ahmedabad, India (IST), but I am accustomed to working with clients in the US, UK, and Europe. I ensure a 3-4 hour overlap for meetings and daily standups."
-    },
-    {
-        question: "Are you available for full-time roles?",
-        answer: "Yes, I am open to full-time Backend or Full Stack Engineering roles. I am also available for contract-based freelance work for specific projects."
-    },
-    {
-        question: "How do you handle project payments?",
-        answer: "For freelance projects, I typically work with a 40% upfront deposit and 60% upon completion. For larger projects, we can set up milestone-based payments."
-    }
-];
+
+interface Faq {
+    _id: string;
+    question: string;
+    answer: string;
+}
+
 
 export const FAQSection = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const [faqs, setFaqs] = useState<Faq[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchFaqs = async () => {
+            try {
+                const res = await fetch('/api/faqs');
+                if (res.ok) {
+                    const data = await res.json();
+                    setFaqs(data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch FAQs");
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchFaqs(); // Fetch on mount
+    }, []);
 
     return (
         <section className="pt-20">
