@@ -2,15 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { Layout, Database, Bot, Smartphone, Check } from 'lucide-react';
+import Image from 'next/image';
 import { SectionHeading } from './SectionHeading';
 
 const SERVICES = [
     {
         icon: Layout,
-        title: "Web App Development",
-        desc: "I build pixel-perfect, responsive web applications using Next.js 14 and Tailwind CSS.",
-        features: ["SPA & PWA Architecture", "Performance Optimization", "SEO-ready Structures", "Complex Dashboards"],
-        // Define full classes to ensure Tailwind compiles them
+        title: "Web Application Development",
+        desc: "Production-grade web applications built with Next.js 14 and React. Pixel-perfect UI, blazing-fast performance, and SEO-ready from day one.",
+        features: ["Single Page & Progressive Web Apps", "Performance-First Architecture", "SEO-Optimized Structures", "Complex Admin Dashboards"],
         iconColor: "text-blue-500",
         bgColor: "bg-blue-500/10",
         checkColor: "text-blue-600",
@@ -18,9 +18,9 @@ const SERVICES = [
     },
     {
         icon: Database,
-        title: "Backend Engineering",
-        desc: "Scalable server-side logic using Node.js. I focus on security, speed, and clean architecture.",
-        features: ["REST & GraphQL APIs", "Database Design (SQL/NoSQL)", "Auth & Security", "Microservices"],
+        title: "Backend & API Engineering",
+        desc: "Scalable, secure server-side systems with Node.js and Express. RESTful APIs, real-time features, and battle-tested database architecture.",
+        features: ["REST & GraphQL APIs", "Database Design (SQL/NoSQL)", "Authentication & Security", "Microservices Architecture"],
         iconColor: "text-emerald-500",
         bgColor: "bg-emerald-500/10",
         checkColor: "text-emerald-600",
@@ -28,19 +28,19 @@ const SERVICES = [
     },
     {
         icon: Bot,
-        title: "AI Integration",
-        desc: "Enhance your app with intelligence. I integrate LLMs and RAG pipelines for smart features.",
-        features: ["Chatbots & Assistants", "Vector Search Implementation", "OpenAI / LangChain", "Automated Workflows"],
+        title: "AI & LLM Integration",
+        desc: "Transform your products with intelligence. Expert integration of LLMs, RAG pipelines, and AI agents for smart, context-aware features.",
+        features: ["Custom AI Chatbots & Assistants", "RAG & Vector Search Pipelines", "OpenAI / LangChain Integration", "Automated AI Workflows"],
         iconColor: "text-violet-500",
         bgColor: "bg-violet-500/10",
         checkColor: "text-violet-600",
         hoverBorder: "group-hover:border-violet-500/50"
     },
     {
-        icon: Smartphone, // Changed from Check to Smartphone
-        title: "Mobile App Development",
-        desc: "Cross-platform mobile apps using React Native. I ensure smooth performance on iOS and Android.",
-        features: ["Native-like UX/UI", "API Integration", "Push Notifications", "App Store Deployment"],
+        icon: Smartphone,
+        title: "Developer Tools & Packages",
+        desc: "Reusable, well-documented developer tools and NPM packages. I build abstractions that save your team hundreds of development hours.",
+        features: ["Open-Source NPM Packages", "Schema-Driven Form Engines", "Headless Data Table Hooks", "CI/CD & DevOps Automation"],
         iconColor: "text-orange-500",
         bgColor: "bg-orange-500/10",
         checkColor: "text-orange-600",
@@ -55,15 +55,19 @@ export default function ServicesSection() {
             {/* Background Texture for Depth */}
             <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none mix-blend-overlay"></div>
 
-            <div className="container mx-auto px-4 sm:px-6 relative z-10">
-                {/* <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">How I Can Help</h2>
-                    <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                        I don't just write code; I provide solutions. Choose the expertise that fits your project needs.
-                    </p>
-                </div> */}
+            {/* Decorative AI Core Illustration (Glassmorphic) */}
+            {/* <div className="absolute -bottom-20 -left-20 w-[300px] md:w-[500px] h-[300px] md:h-[500px] opacity-[0.1] dark:opacity-[0.07] pointer-events-none -z-10 animate-float">
+                <Image
+                    src="/ai-core.png"
+                    alt="AI Core Illustration"
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-contain"
+                />
+            </div> */}
 
-                <SectionHeading title='How I Can Help' description="I don't just write code; I provide solutions. Choose the expertise that fits your project needs." />
+            <div className="container mx-auto px-4 sm:px-6 relative z-10">
+                <SectionHeading title='Solutions I Deliver' description="From concept to deployment — engineering excellence at every stage of your product." />
 
                 {/* Grid Layout: 1 col mobile, 2 cols tablet, 4 cols desktop */}
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">

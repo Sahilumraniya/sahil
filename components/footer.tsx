@@ -233,7 +233,7 @@ export function Footer() {
                         © {new Date().getFullYear()} Sahil Umraniya.
                     </p>
                     <p className="text-xs text-slate-400">
-                        Designed with precision.
+                        Handcrafted with Next.js & ❤️
                     </p>
                 </div>
 

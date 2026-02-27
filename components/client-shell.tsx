@@ -4,8 +4,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from "next-themes";
 import {
     ArrowRight,
+    Sparkles,
+    Code2,
+    Cpu,
+    Layers,
     Package,
 } from 'lucide-react';
+import Image from 'next/image';
 import TechStack from './TechStack';
 import { SectionHeading } from './SectionHeading';
 import { FAQSection } from './FAQSection';
@@ -78,7 +83,7 @@ const ScrambleText = ({ text }: { text: string }) => {
     );
 };
 
-const FadeIn = ({ children }: { children: React.ReactNode }) => {
+const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
     const [isVisible, setIsVisible] = useState(false);
     const domRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -95,7 +100,7 @@ const FadeIn = ({ children }: { children: React.ReactNode }) => {
         return () => { if (currentElement) observer.unobserve(currentElement); };
     }, []);
     return (
-        <div ref={domRef} className={`fade-up ${isVisible ? 'visible' : ''}`}>
+        <div ref={domRef} className={`fade-up ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${delay}ms` }}>
             {children}
         </div>
     );
@@ -114,20 +119,128 @@ export default function ClientShell() {
 
             <main className="pt-32 w-full display:flex flex-col items-center justify-center px-4">
                 <div className="space-y-32">
-                    <section className="container mx-auto px-4 sm:px-6 text-center">
-                        <FadeIn>
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-100 dark:bg-violet-500/10 border border-violet-200 dark:border-violet-500/20 text-violet-700 dark:text-violet-300 text-xs sm:text-sm font-bold uppercase mb-6 sm:mb-8">
-                                <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span></span> Open to Work
+
+                    {/* ═══════════════ HERO SECTION — SPLIT LAYOUT ═══════════════ */}
+                    <section className="container mx-auto px-4 sm:px-6 relative">
+
+                        {/* Decorative Tech Network Background Illustration */}
+                        {/* <div className="absolute -top-20 -right-20 w-[400px] md:w-[600px] h-[400px] md:h-[600px] opacity-[0.08] dark:opacity-[0.05] pointer-events-none -z-10">
+                            <Image
+                                src="/tech-network.png"
+                                alt="Abstract Tech Network"
+                                width={600}
+                                height={600}
+                                className="w-full h-full object-contain"
+                            />
+                        </div> */}
+
+                        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+                            {/* LEFT: Text Content */}
+                            <div className="flex-1 text-center lg:text-left relative">
+                                <FadeIn>
+                                    {/* Availability badge */}
+                                    <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-semibold mb-8">
+                                        <span className="relative flex h-2.5 w-2.5">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                        </span>
+                                        Available for Projects
+                                    </div>
+
+                                    {/* Headline */}
+                                    <h1 className="text-[clamp(2.4rem,6vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.08] mb-6 tracking-tight">
+                                        <span className="text-slate-900 dark:text-white">I Engineer</span>
+                                        <br />
+                                        <span className="text-slate-900 dark:text-white">Products </span>
+                                        <span className="bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 dark:from-violet-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+                                            <ScrambleText text="That Scale" />
+                                        </span>
+                                    </h1>
+
+                                    {/* Subtitle */}
+                                    <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                                        Full Stack Engineer & AI Specialist building
+                                        <span className="font-semibold text-slate-800 dark:text-white"> production-grade backends</span>,
+                                        <span className="font-semibold text-slate-800 dark:text-white"> Next.js applications</span>, and
+                                        <span className="font-semibold text-slate-800 dark:text-white"> intelligent AI systems</span>.
+                                    </p>
+
+                                    {/* CTA Buttons */}
+                                    <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
+                                        <a href="/projects" className="group w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white rounded-2xl font-bold text-base hover:shadow-xl hover:shadow-violet-500/25 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <Sparkles size={18} />
+                                            Explore Portfolio
+                                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                        </a>
+                                        <a href="/resume" className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-2xl font-bold text-base hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg hover:shadow-black/5 transition-all duration-300">
+                                            View Resume
+                                        </a>
+                                    </div>
+
+                                    {/* Trust indicators */}
+                                    <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-sm text-slate-500 dark:text-slate-400">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-8 h-8 rounded-lg bg-violet-100 dark:bg-violet-500/10 flex items-center justify-center">
+                                                <span className="text-violet-600 dark:text-violet-400 font-bold text-xs">15+</span>
+                                            </div>
+                                            <span>Projects Delivered</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center">
+                                                <span className="text-blue-600 dark:text-blue-400 font-bold text-xs">2+</span>
+                                            </div>
+                                            <span>Years Experience</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center">
+                                                <Cpu size={14} className="text-amber-600 dark:text-amber-400" />
+                                            </div>
+                                            <span>Oracle AI Certified</span>
+                                        </div>
+                                    </div>
+                                </FadeIn>
                             </div>
-                            <h1 className="text-[clamp(2.6rem,8vw,4.6rem)] md:text-7xl lg:text-8xl font-extrabold leading-[1.05] md:leading-tight mb-6 sm:mb-8 tracking-tight text-slate-900 dark:text-white">
-                                Building Scalable <br className="hidden sm:block" /><span className="text-gradient inline-block relative"><ScrambleText text="Full-Stack Systems" /></span>
-                            </h1>
-                            <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">I'm Sahil Umraniya. I engineer <span className="font-semibold text-slate-900 dark:text-white">high-performance backends</span> and <span className="font-semibold text-slate-900 dark:text-white">AI-driven applications</span> that scale.</p>
-                            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-                                <a href="/projects" className="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">View Work <ArrowRight size={18} /></a>
-                                <a href="/resume" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white rounded-full font-bold hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">View Resume</a>
+
+                            {/* RIGHT: Professional Photo */}
+                            <div className="flex-shrink-0 w-full max-w-sm lg:max-w-md">
+                                <FadeIn delay={200}>
+                                    <div className="relative">
+                                        {/* Gradient border ring */}
+                                        <div className="absolute -inset-3 bg-gradient-to-br from-violet-500 via-indigo-500 to-purple-500 rounded-[2rem] opacity-20 blur-lg"></div>
+
+                                        {/* Photo container */}
+                                        <div className="relative rounded-[2rem] overflow-hidden border-2 border-white/80 dark:border-white/10 shadow-2xl shadow-violet-500/10 dark:shadow-violet-500/5">
+                                            <Image
+                                                src="/sahil-hero.jpeg"
+                                                alt="Sahil Umraniya — Full Stack Engineer & AI Specialist"
+                                                width={500}
+                                                height={500}
+                                                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+                                                priority
+                                            />
+                                        </div>
+
+                                        {/* Floating badges around photo */}
+                                        <div className="absolute -top-4 -left-4 flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg text-sm font-medium text-slate-700 dark:text-slate-300 animate-float">
+                                            <Code2 size={16} className="text-violet-500" />
+                                            Next.js & React
+                                        </div>
+
+                                        <div className="absolute -bottom-3 -right-3 flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg text-sm font-medium text-slate-700 dark:text-slate-300 animate-float" style={{ animationDelay: '1s' }}>
+                                            <Layers size={16} className="text-indigo-500" />
+                                            System Design
+                                        </div>
+
+                                        <div className="absolute top-1/2 -right-6 hidden xl:flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg text-sm font-medium text-slate-700 dark:text-slate-300 animate-float" style={{ animationDelay: '2s' }}>
+                                            <Cpu size={16} className="text-emerald-500" />
+                                            AI & LLMs
+                                        </div>
+                                    </div>
+                                </FadeIn>
                             </div>
-                        </FadeIn>
+
+                        </div>
                     </section>
 
                     <ImpactStats />
