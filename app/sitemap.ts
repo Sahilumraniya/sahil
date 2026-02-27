@@ -1,13 +1,16 @@
 import { MetadataRoute } from 'next'
+import connectToDatabase from '@/lib/db'
+import { Blog } from '@/lib/models/Blog'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://sahilumraniya.dev' // Change this if your domain changes
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const baseUrl = 'https://sahilumraniya.dev'
 
-    return [
+    // Static pages
+    const staticPages: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
             lastModified: new Date(),
-            changeFrequency: 'yearly',
+            changeFrequency: 'monthly',
             priority: 1,
         },
         {
@@ -19,15 +22,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: `${baseUrl}/projects`,
             lastModified: new Date(),
-            changeFrequency: 'weekly',
+            changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
             url: `${baseUrl}/blog`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.5,
+            priority: 0.9,
         },
-        // Add more static pages here if you have them (e.g., /contact)
+        {
+            url: `${baseUrl}/contact-us`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.6,
+        },
+        {
+            url: `${baseUrl}/resume`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
     ]
+
+    // Dynamic blog post pages
+    let blogPages: MetadataRoute.Sitemap = []
+    try {
+        await connectToDatabase()
+        const blogs = await Blog.find(
+            { status: 'Published' },
+            { slug: 1, updatedAt: 1 }
+        ).lean()
+
+        blogPages = blogs.map((blog: any) => ({
+            url: `${baseUrl}/blog/${blog.slug}`,
+            lastModified: blog.updatedAt || new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+        }))
+    } catch (error) {
+        console.error('Sitemap: Failed to fetch blog posts', error)
+    }
+
+    return [...staticPages, ...blogPages]
 }

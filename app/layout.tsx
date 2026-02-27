@@ -11,68 +11,70 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet
 
 export const metadata: Metadata = {
   title: {
-    default: "Sahil Umraniya | Full Stack Engineer",
-    template: "%s | Sahil Umraniya" // Useful for other pages like "Blog | Sahil Umraniya"
+    default: "Sahil Umraniya | Full Stack Engineer & AI Specialist",
+    template: "%s | Sahil Umraniya"
   },
-  description: "Portfolio of Sahil Umraniya - Full Stack Engineer specializing in Next.js, MERN Stack, and Generative AI solutions.",
+  description: "Sahil Umraniya is a Full Stack Engineer specializing in Next.js, MERN Stack, Node.js, and Generative AI solutions. Available for freelance and full-time opportunities in Ahmedabad, India.",
   icons: {
-    icon: "/logo.png", // The path to your image in app/ or public/
+    icon: "/logo.png",
     shortcut: "/logo.png",
-    apple: "/logo.png", // Optional: for iPhones
+    apple: "/logo.png",
   },
-  // 1. CLEANER KEYWORDS
   keywords: [
     "Sahil Umraniya",
     "Full Stack Engineer",
+    "Full Stack Developer",
     "Next.js Developer",
     "MERN Stack Developer",
-    "React Specialist",
+    "React Developer",
+    "Node.js Developer",
     "Generative AI Expert",
+    "AI Engineer",
     "Software Engineer Ahmedabad",
     "Freelance Web Developer India",
-    "TypeScript",
-    "Node.js",
-    "MongoDB",
+    "TypeScript Developer",
+    "MongoDB Expert",
+    "Redis Queue Processing",
+    "Web Application Development",
     "Portfolio",
-    "Web Application Development"
+    "Hire Full Stack Developer",
+    "React Specialist India",
   ],
 
-  // 2. SELF-REFERENCE (Canonical is crucial)
   metadataBase: new URL("https://sahilumraniya.dev"),
   alternates: {
     canonical: "/",
   },
 
-  // 3. OPEN GRAPH (For LinkedIn/Twitter/WhatsApp previews)
   openGraph: {
-    title: "Sahil Umraniya | Full Stack Engineer",
-    description: "Building scalable web apps with Next.js and AI.",
+    title: "Sahil Umraniya | Full Stack Engineer & AI Specialist",
+    description: "Building scalable web applications with Next.js, Node.js, and Generative AI. 2+ years of experience in production-grade systems.",
     url: "https://sahilumraniya.dev",
     siteName: "Sahil Umraniya",
     locale: "en_US",
     type: "website",
     images: [{
-      url: "/og-image.png", // Make sure this image exists in your /public folder!
+      url: "/og-image.png",
       width: 1200,
       height: 630,
+      alt: "Sahil Umraniya — Full Stack Engineer & AI Specialist",
     }],
   },
 
-  // 4. VERIFICATION (This is where you paste the real codes)
   verification: {
     google: "EZCth_jgoQOWNUQ4Lab36S8Noqo9qfq8D-8IqIr8HSc",
-    yandex: "108328dc714f9838", // Optional, mostly for Russia/Eastern Europe
+    yandex: "108328dc714f9838",
   },
 
   twitter: {
     card: "summary_large_image",
     title: "Sahil Umraniya | Full Stack & AI Developer",
-    description: "Hire Sahil Umraniya for cutting-edge web development. Specialist in Next.js, React, and Generative AI.",
-    images: ["/og-image.png"], // Re-use your OG image
-    creator: "@2Umraniya", // Uncomment and add your handle if you have one
+    description: "Full Stack Engineer specializing in Next.js, MERN Stack, and Generative AI. Available for projects.",
+    images: ["/og-image.png"],
+    creator: "@2Umraniya",
+    site: "@2Umraniya",
   },
 
-  // 5. REMOVED: facebook, itunes, appLinks (unless you actually have a mobile app)
   robots: {
     index: true,
     follow: true,
@@ -84,17 +86,75 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
+  other: {
+    "google-site-verification": "EZCth_jgoQOWNUQ4Lab36S8Noqo9qfq8D-8IqIr8HSc",
+  },
 };
+
+// JSON-LD Structured Data — WebSite + Person + SearchAction
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://sahilumraniya.dev/#website",
+      url: "https://sahilumraniya.dev",
+      name: "Sahil Umraniya",
+      description: "Portfolio of Sahil Umraniya — Full Stack Engineer specializing in Next.js, MERN Stack, and Generative AI solutions.",
+      publisher: { "@id": "https://sahilumraniya.dev/#person" },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: "https://sahilumraniya.dev/blog?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Person",
+      "@id": "https://sahilumraniya.dev/#person",
+      name: "Sahil Umraniya",
+      url: "https://sahilumraniya.dev",
+      image: "https://sahilumraniya.dev/logo.png",
+      jobTitle: "Full Stack Engineer",
+      description: "Software engineer with 2+ years of experience building scalable web applications. Specializes in Next.js, MERN Stack, and Generative AI.",
+      email: "sahilumraniya9512@gmail.com",
+      telephone: "+919327201427",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Ahmedabad",
+        addressCountry: "IN",
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Aditya Silver Oak Institute of Technology",
+      },
+      knowsAbout: [
+        "React", "Next.js", "Node.js", "TypeScript", "MongoDB",
+        "PostgreSQL", "Redis", "Generative AI", "LLMs", "RAG",
+        "Docker", "AWS", "Full Stack Development",
+      ],
+      sameAs: [
+        "https://github.com/sahilumraniya",
+        "https://linkedin.com/in/sahilumraniya",
+        "https://x.com/2Umraniya",
+        "https://instagram.com/sahilumraniya_",
+      ],
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning >
-      <head>
-        {/* <meta name="google-site-verification" content="EZCth_jgoQOWNUQ4Lab36S8Noqo9qfq8D-8IqIr8HSc" /> */}
-      </head>
+    <html lang="en" suppressHydrationWarning>
+      <head />
       <body className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR44ZS7M"
           height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
@@ -106,7 +166,24 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+
+        {/* Google Analytics — single instance via @next/third-parties */}
         <GoogleAnalytics gaId="G-2HK5K15GTV" />
+
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NR44ZS7M');`,
+          }}
+        />
+
+        {/* Tawk.to Chat Widget */}
         <Script
           id="tawk-widget"
           strategy="afterInteractive"
@@ -124,44 +201,14 @@ export default function RootLayout({
           `,
           }}
         />
-        {/* Inside your page component */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Sahil Umraniya",
-              url: "https://sahilumraniya.dev",
-              jobTitle: "Full Stack Engineer",
-              sameAs: [
-                "https://github.com/sahilumraniya",
-                "https://linkedin.com/in/sahilumraniya"
-              ]
-            })
-          }}
-        />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HK5K15GTV"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
 
-            gtag('config', 'G-2HK5K15GTV');
-          `,
-          }}
-        />
+        {/* Structured Data — WebSite + Person */}
         <Script
-          id="gtm-script"
+          id="structured-data-website"
+          type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NR44ZS7M');`,
+            __html: JSON.stringify(websiteJsonLd),
           }}
         />
       </body>
