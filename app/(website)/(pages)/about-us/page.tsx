@@ -42,6 +42,14 @@ const profileJsonLd = {
         description: "Software engineer with 2+ years of experience building scalable, production-grade web applications.",
         image: "https://sahilumraniya.dev/logo.png",
         url: "https://sahilumraniya.dev",
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "Makarba",
+            addressLocality: "Ahmedabad",
+            addressRegion: "Gujarat",
+            postalCode: "380051",
+            addressCountry: "IN",
+        },
         sameAs: [
             "https://github.com/sahilumraniya",
             "https://linkedin.com/in/sahilumraniya",
@@ -106,7 +114,7 @@ export default function AboutPage() {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">The Pixels</span>
                         </h1>
                         <p className="text-lg text-slate-500 dark:text-slate-400 max-w-xl">
-                            My journey from a curious student to a Full Stack Engineer &amp; AI Specialist — building products that make a difference.
+                            Based in Ahmedabad, Engineering for the World. I specialize in bespoke software solutions and remote-first collaboration for global clients.
                         </p>
                     </div>
                 </div>

@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server'
 
-const LLMS_TXT = `# Sahil Umraniya — sahilumraniya.dev
+const LLMS_TXT = `# Sahil Umraniya — Global Software Engineer (Ahmedabad Based)
+> Based in Ahmedabad, India — Engineering Bespoke Software for the World.
 
-> Full Stack Engineer & System Architect specializing in Next.js, MERN Stack, and Generative AI solutions.
+Sahil Umraniya is a top-rated freelance Full Stack Developer specializing in **Custom Software Development** and Generative AI solutions for a global clientele.
 
-## About
-Sahil Umraniya is a software engineer with 2+ years of experience building scalable, production-grade web applications. Strong focus on backend architecture, API performance, and distributed job processing. Hands-on experience with Generative AI systems, RAG pipelines, and developer productivity tooling.
+## Mission
+Building digital excellence from Ahmedabad to the world. Available for projects and teams worldwide.
 
 ## Location
-Ahmedabad, India
+Ahmedabad, Gujarat, India (Makarba) — Working Globally via Remote Collaboration.
 
 ## Skills
 - Frontend: React, Next.js, TypeScript, Tailwind CSS, MUI

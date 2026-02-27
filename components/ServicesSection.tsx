@@ -8,9 +8,9 @@ import { SectionHeading } from './SectionHeading';
 const SERVICES = [
     {
         icon: Layout,
-        title: "Web Application Development",
-        desc: "Production-grade web applications built with Next.js 14 and React. Pixel-perfect UI, blazing-fast performance, and SEO-ready from day one.",
-        features: ["Single Page & Progressive Web Apps", "Performance-First Architecture", "SEO-Optimized Structures", "Complex Admin Dashboards"],
+        title: "Custom Software Development",
+        desc: "Bespoke software solutions engineered for global performance. I transform complex business requirements into scalable, production-grade digital products.",
+        features: ["Tailored ERP & CRM Systems", "Performance-First Architecture", "Cloud-Native Infrastructure", "Remote-First Collaboration"],
         iconColor: "text-blue-500",
         bgColor: "bg-blue-500/10",
         checkColor: "text-blue-600",

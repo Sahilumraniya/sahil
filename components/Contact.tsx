@@ -188,10 +188,16 @@ const ContactUsSection = () => {
                         </div>
                         <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">Start Your Project Today</h2>
                         <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg mb-8">Looking for a reliable Full Stack Engineer for your next project or team? I&apos;m available for both freelance work and full-time opportunities. Let&apos;s create something extraordinary together.</p>
-                        <div className="flex justify-center lg:justify-start gap-3 sm:gap-4">
-                            <a href="https://linkedin.com/in/sahilumraniya" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors text-slate-700 dark:text-white"><Linkedin /></a>
-                            <a href="https://github.com/sahilumraniya" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors text-slate-700 dark:text-white"><Github /></a>
-                            <a href="mailto:sahilumraniya9512@gmail.com" className="p-4 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors text-slate-700 dark:text-white"><Mail /></a>
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200 dark:border-white/5">
+                                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                Based in Ahmedabad, Gujarat
+                            </div>
+                            <div className="flex gap-3 sm:gap-4 w-full lg:w-auto justify-center lg:justify-start">
+                                <a href="https://linkedin.com/in/sahilumraniya" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors text-slate-700 dark:text-white"><Linkedin /></a>
+                                <a href="https://github.com/sahilumraniya" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors text-slate-700 dark:text-white"><Github /></a>
+                                <a href="mailto:sahilumraniya9512@gmail.com" className="p-4 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors text-slate-700 dark:text-white"><Mail /></a>
+                            </div>
                         </div>
                     </div>
                     <div className="lg:w-1/2 w-full"><ContactForm /></div>
