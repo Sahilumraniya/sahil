@@ -2,7 +2,6 @@ import CinematicBlogView from "./CinematicBlogView";
 import connectToDatabase from "@/lib/db";
 import { Blog } from "@/lib/models/Blog";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 
 interface BlogPostProps {
     params: Promise<{
@@ -148,16 +147,12 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
 
     return (
         <>
-            <Script
-                id={`article-jsonld-${blog.slug}`}
+            <script
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
             />
-            <Script
-                id={`breadcrumb-jsonld-${blog.slug}`}
+            <script
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
             <CinematicBlogView blog={blog} />

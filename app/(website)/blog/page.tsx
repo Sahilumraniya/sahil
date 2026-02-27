@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import connectToDatabase from "@/lib/db";
 import { Blog } from "@/lib/models/Blog";
 import BlogList from "./BlogList";
-import Script from "next/script";
 
 // Force dynamic rendering so new blogs appear immediately
 export const dynamic = 'force-dynamic';
@@ -81,16 +80,12 @@ export default async function BlogPage() {
 
     return (
         <>
-            <Script
-                id="blog-collection-jsonld"
+            <script
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
             />
-            <Script
-                id="blog-breadcrumb-jsonld"
+            <script
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
             <BlogList initialBlogs={blogs} />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
@@ -160,7 +161,7 @@ export default function RootLayout({
           height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
@@ -202,11 +203,9 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           }}
         />
 
-        {/* Structured Data — WebSite + Person */}
-        <Script
-          id="structured-data-website"
+        {/* Structured Data — WebSite + Person (server-rendered for crawlers) */}
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteJsonLd),
           }}

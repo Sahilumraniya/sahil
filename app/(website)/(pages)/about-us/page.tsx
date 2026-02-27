@@ -6,7 +6,6 @@ import PhilosophySection from '@/components/PhilosophySection'; // Engineering V
 import EducationSection from '@/components/EducationSection'; // The NEW component above
 import CTABanner from '@/components/CTABanner';
 import ExperienceSection from '@/components/ExperienceSection';
-import Script from 'next/script';
 
 export const metadata: Metadata = {
     title: "About — Full Stack Engineer & AI Specialist",
@@ -62,16 +61,12 @@ const breadcrumbJsonLd = {
 export default function AboutPage() {
     return (
         <main className="min-h-screen pt-20">
-            <Script
-                id="about-profile-jsonld"
+            <script
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
             />
-            <Script
-                id="about-breadcrumb-jsonld"
+            <script
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
 
