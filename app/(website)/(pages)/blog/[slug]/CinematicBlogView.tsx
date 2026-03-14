@@ -179,7 +179,7 @@ export default function CinematicBlogView({ blog }: { blog: BlogPost }) {
 
                     {/* Main Content Column */}
                     <div className="flex-1 min-w-0">
-                        <div className="bg-white dark:bg-[#0a0a0a] rounded-t-3xl border-t border-slate-200 dark:border-white/5 p-6 md:p-12 shadow-[0_-20px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_-20px_40px_rgba(0,0,0,0.8)]">
+                        <div className="ds-card p-6 md:p-12">
                             {/* Share Bar */}
                             <div className="flex justify-between items-center py-6 border-b border-white/5 mb-10">
                                 <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">Article</span>
@@ -256,12 +256,12 @@ export default function CinematicBlogView({ blog }: { blog: BlogPost }) {
                             </article>
 
                             {/* Call to Action Footer */}
-                            <div className="mt-20 p-1 bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 rounded-2xl">
-                                <div className="bg-white dark:bg-[#111] rounded-xl p-8 md:p-12 text-center">
-                                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Did you enjoy this article?</h3>
-                                    <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-md mx-auto">Check out more insights on AI, Agents, and Engineering on the main blog.</p>
+                            <div className="mt-20 p-1 bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 rounded-[calc(var(--ds-radius)+0.25rem)]">
+                                <div className="ds-card p-8 md:p-12 text-center">
+                                    <h3 className="text-2xl font-bold text-[var(--ds-text,currentColor)] mb-4">Did you enjoy this article?</h3>
+                                    <p className="opacity-70 mb-8 max-w-md mx-auto">Check out more insights on AI, Agents, and Engineering on the main blog.</p>
                                     <Link href="/blog">
-                                        <button className="px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-black font-bold rounded-full hover:scale-105 transition-transform">
+                                        <button className="ds-btn px-8 py-3 font-bold hover:scale-105 transition-transform">
                                             Read More Articles
                                         </button>
                                     </Link>

@@ -45,7 +45,7 @@ export const FAQSection = () => {
                     {faqs.map((faq, idx) => (
                         <div
                             key={idx}
-                            className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden"
+                            className="ds-card overflow-hidden"
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}

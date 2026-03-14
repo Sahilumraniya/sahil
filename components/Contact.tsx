@@ -2,10 +2,31 @@
 import { CheckCircle2, ChevronDown, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+
+const SUBJECT_OPTIONS = [
+    "I have a freelance project to discuss",
+    "I want to hire you for a full-time role",
+    "I need technical consultation or architecture review",
+    "I want to collaborate on an open-source project",
+    "General inquiry"
+];
 
 export function ContactForm() {
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+    const [isSubjectOpen, setIsSubjectOpen] = useState(false);
+    const [selectedSubject, setSelectedSubject] = useState(SUBJECT_OPTIONS[0]);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsSubjectOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -43,13 +64,13 @@ export function ContactForm() {
         }
     };
 
-    const inputClasses = "w-full bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3.5 outline-none text-slate-900 dark:text-white transition-all duration-300 placeholder:text-slate-400 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20";
+    const inputClasses = "ds-input w-full px-4 py-3.5 outline-none transition-all duration-300 placeholder:opacity-50 focus:ring-2 focus:ring-violet-500/50";
     const labelClasses = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5 ml-1";
 
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full bg-white dark:bg-white/5 backdrop-blur-xl p-8 rounded-[2rem] border border-slate-200 dark:border-white/10 shadow-2xl relative overflow-hidden"
+            className="ds-card w-full p-8 relative overflow-hidden"
         >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-blue-500"></div>
 
@@ -99,17 +120,39 @@ export function ContactForm() {
                     </div>
                 </div>
 
-                <div className="group relative">
+                <div className="group relative" ref={dropdownRef}>
                     <label className={labelClasses}>What brings you here?</label>
                     <div className="relative">
-                        <select className={`${inputClasses} appearance-none cursor-pointer`} name='subject'>
-                            <option>I have a freelance project to discuss</option>
-                            <option>I want to hire you for a full-time role</option>
-                            <option>I need technical consultation or architecture review</option>
-                            <option>I want to collaborate on an open-source project</option>
-                            <option>General inquiry</option>
-                        </select>
-                        <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={18} />
+                        <input type="hidden" name="subject" value={selectedSubject} />
+                        <button
+                            type="button"
+                            className={`${inputClasses} flex items-center justify-between text-left`}
+                            onClick={() => setIsSubjectOpen(!isSubjectOpen)}
+                        >
+                            <span className="truncate pr-4">{selectedSubject}</span>
+                            <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${isSubjectOpen ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {isSubjectOpen && (
+                            <div className="absolute z-50 w-full mt-2 ds-card py-2 shadow-2xl overflow-hidden focus:outline-none border border-slate-200 dark:border-white/10 max-h-60 overflow-y-auto">
+                                {SUBJECT_OPTIONS.map((option) => (
+                                    <button
+                                        key={option}
+                                        type="button"
+                                        onClick={() => {
+                                            setSelectedSubject(option);
+                                            setIsSubjectOpen(false);
+                                        }}
+                                        className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedSubject === option
+                                            ? "bg-violet-500/10 text-violet-600 dark:text-violet-400 font-semibold"
+                                            : "text-[var(--ds-text,currentColor)] hover:bg-slate-100 dark:hover:bg-white/5 opacity-80 hover:opacity-100"
+                                            }`}
+                                    >
+                                        {option}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -128,12 +171,9 @@ export function ContactForm() {
                     type="submit"
                     disabled={formState !== 'idle'}
                     className={`
-                        w-full py-4 rounded-xl font-bold text-white transition-all duration-300 transform active:scale-[0.98]
-                        flex items-center justify-center gap-2 shadow-lg shadow-violet-500/20
-                        ${formState === 'success'
-                            ? 'bg-green-500 hover:bg-green-600'
-                            : 'bg-slate-900 dark:bg-white dark:text-slate-900 hover:opacity-90 hover:-translate-y-0.5'
-                        }
+                        ds-btn w-full py-4 font-bold transition-all duration-300 transform active:scale-[0.98]
+                        flex items-center justify-center gap-2 hover:brightness-110 hover:-translate-y-0.5
+                        ${formState === 'success' && '!bg-green-500 !text-white !border-green-500'}
                         disabled:opacity-70 disabled:cursor-not-allowed
                     `}
                 >
@@ -159,12 +199,12 @@ const ContactUsSection = () => {
 
     return (
         <section id="contact" className="container mx-auto px-4 sm:px-6 mt-12 sm:mt-32 mb-24 sm:mb-32">
-            <div className="bg-white/90 dark:bg-slate-900 text-slate-900 dark:text-white rounded-3xl sm:rounded-[3rem] p-6 sm:p-10 lg:p-24 relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl">
+            <div className="ds-card text-slate-900 dark:text-white p-6 sm:p-10 lg:p-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-noise opacity-10"></div>
                 <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-violet-600/10 dark:bg-violet-600/20 rounded-full blur-[100px] pointer-events-none"></div>
 
                 {/* Decorative Tech Pattern Illustration */}
-                <div className="absolute top-10 -right-20 w-[300px] h-[300px] opacity-[0.05] dark:opacity-[0.03] pointer-events-none -z-10 animate-float">
+                {/* <div className="absolute top-10 -right-20 w-[300px] h-[300px] opacity-[0.05] dark:opacity-[0.03] pointer-events-none -z-10 animate-float">
                     <Image
                         src="/tech-pattern.png"
                         alt="Geometric Pattern"
@@ -172,14 +212,14 @@ const ContactUsSection = () => {
                         height={300}
                         className="w-full h-full object-contain"
                     />
-                </div>
+                </div> */}
 
                 <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
                     <div className="lg:w-1/2 text-center lg:text-left">
                         {/* Photo */}
                         <div className="relative w-24 h-24 rounded-2xl overflow-hidden border-2 border-white/80 dark:border-white/10 shadow-lg mb-6 mx-auto lg:mx-0 group cursor-pointer">
                             <Image
-                                src="/sahil-hero-1.png"
+                                src="/sahil-about.png"
                                 alt="Sahil Umraniya"
                                 fill
                                 className="object-cover group-hover:scale-110 transition-transform duration-500"

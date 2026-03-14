@@ -189,36 +189,50 @@ export default function ProjectsPage() {
         <main className="min-h-screen pt-32 pb-20">
 
             {/* Header Section */}
-            <div className="container mx-auto px-4 sm:px-6 mb-16 text-center">
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6"
-                >
-                    Built to <span className="text-violet-600">Perform.</span>
-                </motion.h1>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed"
-                >
-                    A collection of production-grade applications, developer tools, and AI experiments.
-                    From architecture to pixels, everything here is built by me.
-                </motion.p>
+            <div className="relative container mx-auto px-4 sm:px-6 mb-8 text-center overflow-hidden py-4">
+                {/* Background Glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full bg-violet-500/5 blur-[120px] pointer-events-none -z-10" />
+
+                <div className="space-y-6 max-w-4xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest"
+                    >
+                        <Package size={14} className="text-violet-500" />
+                        <span>Featured Works</span>
+                    </motion.div>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-5xl md:text-8xl font-black tracking-tight text-slate-900 dark:text-white"
+                    >
+                        Built to <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">Perform.</span>
+                    </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-light"
+                    >
+                        A curated collection of production-grade applications, developer tools, and AI experiments crafted with technical precision.
+                    </motion.p>
+                </div>
             </div>
 
             {/* Filter Tabs */}
             <div className="container mx-auto px-4 sm:px-6 mb-12">
                 <div className="flex justify-center">
-                    <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-white dark:bg-white/5 backdrop-blur-xl rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm">
+                    <div className="flex flex-wrap justify-center gap-2 p-1.5 ds-card text-[var(--ds-text,currentColor)]">
                         {CATEGORIES.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`relative px-4 py-2 rounded-xl text-sm font-semibold transition-colors duration-300 z-10 ${activeCategory === cat
-                                    ? 'text-white'
-                                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                    ? 'text-white dark:text-slate-900'
+                                    : 'opacity-70 hover:opacity-100'
                                     }`}
                             >
                                 {activeCategory === cat && (
@@ -250,7 +264,7 @@ export default function ProjectsPage() {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                                 key={project.title} // Use title as key for stability
-                                className="group relative flex flex-col h-full bg-white dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-white/10 rounded-3xl p-6 hover:shadow-2xl hover:border-violet-500/30 transition-all duration-300"
+                                className="ds-card group relative flex flex-col h-full p-6 hover:brightness-105 hover:border-[var(--ds-card-border)] hover:border-violet-500/30 transition-all duration-300"
                             >
                                 {/* Header: Icon & Links */}
                                 <div className="flex justify-between items-start mb-6">

@@ -19,11 +19,259 @@
     :root {
         --background: 255 255 255;
         --foreground: 15 23 42;
+
+        /* Default Design System Variables */
+        --ds-card-bg: #ffffff;
+        --ds-card-border: 1px solid #e2e8f0;
+        --ds-text: #0f172a;
+        /* slate-200 */
+        --ds-card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        /* shadow-md */
+        --ds-radius: 0.75rem;
+        /* xl */
+        --ds-card-backdrop: blur(0px);
+        --ds-btn-bg: #0f172a;
+        /* slate-900 */
+        --ds-btn-text: #ffffff;
+        --ds-btn-radius: 9999px;
+        /* full */
+        --ds-btn-shadow: none;
     }
 
     .dark {
         --background: 2 6 23;
         --foreground: 255 255 255;
+
+        /* Default Dark Mode Variables */
+        --ds-card-bg: #020617;
+        --ds-card-border: 1px solid #1e293b;
+        --ds-text: #ffffff;
+        --ds-card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+        --ds-btn-bg: #ffffff;
+        --ds-btn-text: #000000;
+    }
+
+    /* 1. Glassmorphism */
+    [data-design="glassmorphism"] {
+        --ds-card-bg: rgba(255, 255, 255, 0.4);
+        --ds-card-border: 1px solid rgba(255, 255, 255, 0.5);
+        --ds-card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        --ds-card-backdrop: blur(12px);
+        --ds-radius: 1rem;
+        --ds-btn-bg: rgba(255, 255, 255, 0.2);
+        --ds-btn-text: #0f172a;
+        --ds-btn-border: 1px solid rgba(255, 255, 255, 0.4);
+        --ds-btn-backdrop: blur(4px);
+    }
+
+    .dark[data-design="glassmorphism"] {
+        --ds-card-bg: rgba(0, 0, 0, 0.4);
+        --ds-card-border: 1px solid rgba(255, 255, 255, 0.1);
+        --ds-btn-bg: rgba(255, 255, 255, 0.1);
+        --ds-btn-text: #ffffff;
+    }
+
+    /* 2. Skeuomorphism */
+    [data-design="skeuomorphism"] {
+        --ds-card-bg: linear-gradient(145deg, #ffffff, #e6e6e6);
+        --ds-card-border: 1px solid #ffffff;
+        --ds-card-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+        --ds-radius: 1.5rem;
+        --ds-btn-bg: linear-gradient(145deg, #ffffff, #e6e6e6);
+        --ds-btn-text: #0f172a;
+        --ds-btn-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+    }
+
+    .dark[data-design="skeuomorphism"] {
+        --ds-card-bg: linear-gradient(145deg, #111827, #0b0f19);
+        --ds-card-border: 1px solid #1f2937;
+        --ds-card-shadow: 20px 20px 60px #080c14, -20px -20px 60px #161e30;
+        --ds-btn-bg: linear-gradient(145deg, #1f2937, #111827);
+        --ds-btn-text: #ffffff;
+        --ds-btn-shadow: 5px 5px 10px #080c14, -5px -5px 10px #161e30;
+    }
+
+    /* 3. Neo Brutalism */
+    [data-design="neobrutalism"] {
+        --ds-card-bg: #ffffff;
+        --ds-card-border: 3px solid #000000;
+        --ds-text: #000000;
+        --ds-card-shadow: 6px 6px 0px 0px #000000;
+        --ds-radius: 0px;
+        --ds-btn-bg: #3b82f6;
+        --ds-btn-text: #ffffff;
+        --ds-btn-radius: 0px;
+        --ds-btn-border: 3px solid #000000;
+        --ds-btn-shadow: 4px 4px 0px 0px #000000;
+        --ds-card-backdrop: none;
+    }
+
+    .dark[data-design="neobrutalism"] {
+        --ds-card-bg: #000000;
+        --ds-card-border: 3px solid #ec4899;
+        --ds-text: #ffffff;
+        --ds-card-shadow: 6px 6px 0px 0px #3b82f6;
+        --ds-btn-bg: #3b82f6;
+        --ds-btn-text: #ffffff;
+        --ds-btn-border: 3px solid #ec4899;
+        --ds-btn-shadow: 4px 4px 0px 0px #ec4899;
+    }
+
+    /* 4. Claymorphism */
+    [data-design="claymorphism"] {
+        --ds-card-bg: #f3f4f6;
+        --ds-card-border: none;
+        --ds-card-shadow: 20px 20px 40px #cecece, -20px -20px 40px #ffffff, inset 5px 5px 15px rgba(255, 255, 255, 0.7), inset -5px -5px 15px rgba(0, 0, 0, 0.05);
+        --ds-radius: 2.5rem;
+        --ds-btn-bg: #3b82f6;
+        --ds-btn-text: #ffffff;
+        --ds-btn-radius: 2rem;
+        --ds-btn-shadow: 8px 8px 16px #cecece, -8px -8px 16px #ffffff, inset 4px 4px 8px rgba(255, 255, 255, 0.4), inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark[data-design="claymorphism"] {
+        --ds-card-bg: #1f2937;
+        --ds-card-shadow: 20px 20px 40px #141a23, -20px -20px 40px #2a384b, inset 5px 5px 15px rgba(255, 255, 255, 0.1), inset -5px -5px 15px rgba(0, 0, 0, 0.3);
+        --ds-btn-bg: #8b5cf6;
+        --ds-btn-shadow: 8px 8px 16px #141a23, -8px -8px 16px #2a384b, inset 4px 4px 8px rgba(255, 255, 255, 0.2), inset -4px -4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 5. Minimalism */
+    [data-design="minimalism"] {
+        --ds-card-bg: #ffffff;
+        --ds-card-border: 1px solid #e5e7eb;
+        --ds-card-shadow: none;
+        --ds-radius: 0px;
+        --ds-btn-bg: transparent;
+        --ds-btn-text: #000000;
+        --ds-btn-radius: 0px;
+        --ds-btn-border: 1px solid #000000;
+    }
+
+    .dark[data-design="minimalism"] {
+        --ds-card-bg: #000000;
+        --ds-card-border: 1px solid #374151;
+        --ds-btn-text: #ffffff;
+        --ds-btn-border: 1px solid #ffffff;
+    }
+
+    /* 6. Liquid Glass */
+    [data-design="liquidglass"] {
+        --ds-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+        --ds-card-border: 1px solid rgba(255, 255, 255, 0.4);
+        --ds-card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        --ds-card-backdrop: blur(20px) saturate(150%);
+        --ds-radius: 2rem;
+        --ds-btn-bg: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(139, 92, 246, 0.6));
+        --ds-btn-text: #ffffff;
+        --ds-btn-backdrop: blur(10px) saturate(150%);
+        --ds-btn-border: 1px solid rgba(255, 255, 255, 0.2);
+        --ds-text: #0f172a;
+    }
+
+    .dark[data-design="liquidglass"] {
+        --ds-card-bg: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+        --ds-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        --ds-text: #ffffff;
+    }
+
+    /* 7. Framer Motion */
+    [data-design="framermotion"] {
+        --ds-card-bg: #ffffff;
+        --ds-card-border: 1px solid #8b5cf6;
+        --ds-card-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.2);
+        --ds-radius: 1rem;
+        --ds-btn-bg: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+        --ds-btn-text: #ffffff;
+        --ds-btn-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        --ds-text: #1e293b;
+    }
+
+    .dark[data-design="framermotion"] {
+        --ds-card-bg: #030712;
+        --ds-card-border: 1px solid rgba(139, 92, 246, 0.3);
+        --ds-card-shadow: 0 10px 40px -12px rgba(139, 92, 246, 0.4);
+        --ds-text: #f8fafc;
+        --ds-btn-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    }
+
+    /* Framer Motion Specific Enhancements */
+    [data-design="framermotion"] .ds-btn {
+        box-shadow: var(--ds-btn-shadow);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-design="framermotion"] .ds-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        filter: brightness(1.1);
+    }
+
+    [data-design="framermotion"] .ds-card {
+        border-radius: 1.5rem;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+    }
+
+    [data-design="framermotion"] .ds-card:hover {
+        border-color: #8b5cf6;
+    }
+
+    [data-design="precision-ai"] {
+        --ds-card-bg: #ffffff;
+        --ds-card-border: 1px solid #e2e8f0;
+        --ds-card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --ds-radius: 0.5rem;
+        --ds-btn-bg: #0f172a;
+        --ds-btn-text: #ffffff;
+        --ds-btn-shadow: none;
+        --ds-text: #0f172a;
+        --ds-accent: #0ea5e9;
+        /* AI Cyan */
+    }
+
+    .dark[data-design="precision-ai"] {
+        --ds-card-bg: #020617;
+        --ds-card-border: 1px solid #1e293b;
+        --ds-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --ds-text: #f8fafc;
+        --ds-accent: #38bdf8;
+        --ds-btn-bg: #38bdf8;
+        --ds-btn-text: #020617;
+    }
+
+    /* Precision AI Specific Enhancements */
+    [data-design="precision-ai"] .ds-btn {
+        border-radius: 4px;
+        font-family: var(--font-jetbrains-mono), monospace;
+        letter-spacing: -0.025em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 700;
+        border: 1px solid transparent;
+    }
+
+    [data-design="precision-ai"] .ds-btn:hover {
+        background: transparent;
+        border-color: var(--ds-accent);
+        color: var(--ds-accent);
+    }
+
+    [data-design="precision-ai"] .ds-card {
+        border-radius: 0;
+        border-left: 4px solid var(--ds-accent);
+    }
+
+    [data-design="precision-ai"] .tech-grid {
+        background-image:
+            linear-gradient(to right, rgba(14, 165, 233, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    .dark[data-design="precision-ai"] .tech-grid {
+        background-image:
+            linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
     }
 
     html {
@@ -162,4 +410,44 @@
 ::selection {
     background: #8b5cf6;
     color: white;
+}
+
+/* Design System Utilities */
+.ds-card {
+    background: var(--ds-card-bg);
+    border: var(--ds-card-border, none);
+    box-shadow: var(--ds-card-shadow, none);
+    border-radius: var(--ds-radius, 0.75rem);
+    backdrop-filter: var(--ds-card-backdrop, none);
+    color: var(--ds-text, inherit);
+    transition: all 0.3s ease;
+}
+
+.ds-btn {
+    background: var(--ds-btn-bg);
+    color: var(--ds-btn-text);
+    box-shadow: var(--ds-btn-shadow, none);
+    border: var(--ds-btn-border, none);
+    border-radius: var(--ds-btn-radius, 9999px);
+    backdrop-filter: var(--ds-btn-backdrop, none);
+    transition: all 0.3s ease;
+}
+
+.ds-input {
+    background: var(--ds-btn-bg);
+    color: var(--ds-btn-text);
+    border: var(--ds-card-border, 1px solid #e2e8f0);
+    border-radius: var(--ds-radius, 0.75rem);
+    backdrop-filter: var(--ds-card-backdrop, none);
+    transition: all 0.3s ease;
+}
+
+.ds-input::placeholder {
+    color: var(--ds-btn-text);
+    opacity: 0.6;
+}
+
+/* Ensure Neo Brutalism placeholders are extra visible */
+[data-design="neobrutalism"] .ds-input::placeholder {
+    opacity: 0.8;
 }

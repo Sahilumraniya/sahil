@@ -65,10 +65,8 @@ const ContactCard = ({ icon: Icon, label, value, href, index }: any) => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 * index, duration: 0.5 }}
-        className="flex items-center gap-4 p-4 rounded-2xl 
-                   bg-white dark:bg-white/5 backdrop-blur-sm
-                   border border-slate-200 dark:border-white/10 
-                   hover:border-violet-500/30 hover:bg-violet-500/5 hover:shadow-lg dark:hover:shadow-none
+        className="ds-card flex items-center gap-4 p-4
+                   hover:border-[var(--ds-card-border)] hover:bg-violet-500/5 hover:brightness-105
                    transition-all duration-300 group cursor-pointer
                    min-w-0 w-full"
     >

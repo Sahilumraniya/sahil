@@ -4,7 +4,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Eye, Hash, Search, ArrowLeft } from "lucide-react";
+import { Clock, Eye, Hash, Search } from "lucide-react";
 
 interface BlogPost {
     _id: string;
@@ -43,40 +43,45 @@ export default function BlogList({ initialBlogs }: { initialBlogs: BlogPost[] })
     const rest = filteredBlogs.length > 0 ? filteredBlogs.slice(1) : [];
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-[#020617] pb-20">
+        <div className="min-h-screen bg-slate-50 dark:bg-[#020617] pb-20 pt-8">
             {/* Header / Hero */}
-            <div className="bg-white dark:bg-[#0f172a] border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 py-20">
-                    <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-6">
-                        <ArrowLeft size={18} />
-                        Back to Home
-                    </Link>
-                    <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6">
-                        Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Blog</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-8">
-                        Deep dives into modern web development, software architecture, and the future of tech.
-                    </p>
+            <div className="relative bg-[var(--ds-card-bg)] border-b border-[var(--ds-card-border)] transition-colors duration-300 overflow-hidden">
+                {/* Background Glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-full bg-gradient-to-b from-violet-500/10 via-transparent to-transparent blur-[120px] pointer-events-none" />
 
-                    <div className="flex flex-col md:flex-row gap-4 max-w-2xl items-start md:items-center">
+                <div className="relative max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
+
+                    <div className="space-y-2 mb-8">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900/30 border border-violet-200 dark:border-violet-800 text-violet-600 dark:text-violet-400 text-xs font-bold uppercase tracking-widest">
+                            <span>Knowledge Base</span>
+                        </div>
+                        <h1 className="text-5xl md:text-8xl font-black tracking-tight text-slate-900 dark:text-white">
+                            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">Blog</span>
+                        </h1>
+                        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed font-light">
+                            Deep dives into modern web development, software architecture, and the future of tech—written for builders.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row gap-6 max-w-3xl items-start md:items-center pt-4">
                         {/* Search Bar */}
-                        <div className="relative flex-1 w-full md:min-w-[320px]">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                        <div className="relative flex-1 w-full group">
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-violet-500 transition-colors" size={20} />
                             <input
                                 type="text"
-                                placeholder="Search articles..."
+                                placeholder="Search articles by title or topic..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-12 pr-4 py-3 bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-violet-500 text-slate-900 dark:text-white placeholder:text-slate-400 transition-all"
+                                className="ds-input w-full pl-12 pr-4 py-4 text-base transition-all rounded-2xl border-slate-200 dark:border-white/10"
                             />
                         </div>
 
                         {/* Tags Filter */}
                         {allTags.length > 0 && (
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 py-2">
                                 <button
                                     onClick={() => setSelectedTag(null)}
-                                    className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${!selectedTag ? 'bg-violet-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+                                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all border ${!selectedTag ? 'bg-slate-900 dark:bg-violet-600 text-white border-transparent' : 'bg-white dark:bg-white/5 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-white/10 hover:border-violet-300 dark:hover:border-violet-800'}`}
                                 >
                                     All
                                 </button>
@@ -84,7 +89,7 @@ export default function BlogList({ initialBlogs }: { initialBlogs: BlogPost[] })
                                     <button
                                         key={tag}
                                         onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-                                        className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${selectedTag === tag ? 'bg-violet-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+                                        className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all border ${selectedTag === tag ? 'bg-slate-900 dark:bg-violet-600 text-white border-transparent' : 'bg-white dark:bg-white/5 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-white/10 hover:border-violet-300 dark:hover:border-violet-800'}`}
                                     >
                                         {tag}
                                     </button>
@@ -156,7 +161,7 @@ export default function BlogList({ initialBlogs }: { initialBlogs: BlogPost[] })
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {/* If we are filtering, show all results. If not, show 'rest' (skipping featured) */}
                             {(searchQuery || selectedTag ? filteredBlogs : rest).map((blog: BlogPost, index) => (
-                                <Link href={`/blog/${blog.slug}`} key={blog._id} className="group flex flex-col bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 50}ms` }}>
+                                <Link href={`/blog/${blog.slug}`} key={blog._id} className="ds-card group flex flex-col p-0 overflow-hidden hover:brightness-105 hover:-translate-y-1 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 50}ms` }}>
                                     <div className="relative aspect-video w-full overflow-hidden">
                                         {blog.image ? (
                                             <Image src={blog.image} alt={blog.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />

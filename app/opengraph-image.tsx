@@ -24,28 +24,32 @@ export default async function Image() {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    backgroundColor: '#050505',
+                    backgroundColor: '#020617',
                     position: 'relative',
-                    fontFamily: 'sans-serif', // Satori defaults, or load a custom font if needed
+                    fontFamily: 'sans-serif',
                 }}
             >
                 {/* --- BACKGROUND FX --- */}
 
-                {/* Mesh Gradient (Northern Lights) */}
+                {/* Aurora Mesh Gradient */}
                 <div
                     style={{
                         position: 'absolute',
-                        top: '-50%',
-                        left: '-50%',
-                        width: '200%',
-                        height: '200%',
-                        background: 'radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(6, 182, 212, 0.15) 0%, transparent 50%)',
-                        filter: 'blur(60px)',
-                        opacity: 0.8,
+                        top: '-10%',
+                        left: '-10%',
+                        width: '120%',
+                        height: '120%',
+                        background: `
+                            radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.25) 0%, transparent 40%),
+                            radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 40%),
+                            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 40%)
+                        `,
+                        opacity: 1,
                     }}
                 />
 
-                {/* Technical Grid Pattern */}
+                {/* Engineering Grid */}
                 <div
                     style={{
                         position: 'absolute',
@@ -53,13 +57,12 @@ export default async function Image() {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
-                        backgroundSize: '80px 80px',
-                        opacity: 0.5,
+                        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
+                        backgroundSize: '40px 40px',
                     }}
                 />
 
-                {/* Vignette */}
+                {/* Subtle Scanlines */}
                 <div
                     style={{
                         position: 'absolute',
@@ -67,7 +70,8 @@ export default async function Image() {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        background: 'radial-gradient(circle at center, transparent 40%, #050505 100%)',
+                        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.02) 50%)',
+                        backgroundSize: '100% 4px',
                     }}
                 />
 
@@ -83,57 +87,47 @@ export default async function Image() {
                         width: '100%',
                     }}
                 >
-                    {/* Status Pill */}
+                    {/* Status Badge */}
                     <div
                         style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '12px',
-                            background: 'rgba(255, 255, 255, 0.03)',
+                            gap: '8px',
+                            background: 'rgba(255, 255, 255, 0.05)',
                             border: '1px solid rgba(255, 255, 255, 0.1)',
-                            padding: '8px 20px',
+                            padding: '6px 16px',
                             borderRadius: '99px',
-                            marginBottom: '20px',
-                            boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                            marginBottom: '32px',
                         }}
                     >
                         <div
                             style={{
-                                width: '8px',
-                                height: '8px',
-                                backgroundColor: '#4ade80',
+                                width: '6px',
+                                height: '6px',
+                                backgroundColor: '#10b981',
                                 borderRadius: '50%',
-                                boxShadow: '0 0 10px #4ade80',
+                                boxShadow: '0 0 12px #10b981',
                             }}
                         />
-                        <div
-                            style={{
-                                color: '#cbd5e1',
-                                fontSize: '16px',
-                                fontWeight: 500,
-                                letterSpacing: '0.02em',
-                            }}
-                        >
-                            Available for new projects
+                        <div style={{ color: '#94a3b8', fontSize: '14px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                            Engineer_Status: Available
                         </div>
                     </div>
 
-                    {/* Hero Title */}
+                    {/* Name with Gradient */}
                     <div
                         style={{
-                            fontSize: '96px',
-                            fontWeight: 800,
-                            lineHeight: 1.1,
-                            letterSpacing: '-0.04em',
-                            color: 'white',
-                            marginBottom: '12px',
+                            fontSize: '110px',
+                            fontWeight: 900,
+                            lineHeight: 1,
+                            letterSpacing: '-0.05em',
                             display: 'flex',
-                            textShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                            marginBottom: '16px',
                         }}
                     >
                         <span
                             style={{
-                                background: 'linear-gradient(135deg, #fff 40%, #a78bfa 100%)',
+                                background: 'linear-gradient(to bottom right, #ffffff 30%, #a78bfa 100%)',
                                 backgroundClip: 'text',
                                 color: 'transparent',
                             }}
@@ -142,132 +136,89 @@ export default async function Image() {
                         </span>
                     </div>
 
-                    {/* Subtitle */}
+                    {/* Role / Tagline */}
                     <div
                         style={{
-                            fontSize: '24px',
-                            color: '#94a3b8',
-                            marginBottom: '25px',
+                            fontSize: '28px',
+                            fontWeight: 400,
+                            color: '#64748b',
+                            marginBottom: '48px',
                             display: 'flex',
+                            gap: '12px',
                             alignItems: 'center',
-                            fontFamily: 'monospace',
                         }}
                     >
-                        &lt;FullStack <span style={{ color: '#a78bfa', marginLeft: 6 }}>Engineer</span> /&gt;
-                        <span style={{ margin: '0 12px', color: '#64748b' }}>•</span>
-                        &lt;System <span style={{ color: '#38bdf8', marginLeft: 6 }}>Architect</span> /&gt;
+                        <span style={{ color: '#cbd5e1' }}>Full Stack Engineer</span>
+                        <span style={{ color: '#334155' }}>|</span>
+                        <span style={{ color: '#cbd5e1' }}>UI/UX Architect</span>
+                        <span style={{ color: '#334155' }}>|</span>
+                        <span style={{ color: '#cbd5e1' }}>AI Enthusiast</span>
                     </div>
 
-                    {/* CTA Highlight Box */}
-                    <div
-                        style={{
-                            marginBottom: '35px',
-                            background: 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)',
-                            border: '1px solid rgba(255,255,255,0.08)',
-                            padding: '24px 50px',
-                            borderRadius: '20px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            position: 'relative',
-                        }}
-                    >
-                        <div
-                            style={{
-                                fontSize: '24px',
-                                color: '#94a3b8',
-                                fontWeight: 400,
-                                letterSpacing: '0.02em',
-                                marginBottom: '6px',
-                            }}
-                        >
-                            Have an idea? Let&apos;s connect &amp;
-                        </div>
-                        <div
-                            style={{
-                                fontSize: '44px',
-                                fontWeight: 800,
-                                letterSpacing: '-0.02em',
-                                lineHeight: 1.1,
-                                background: 'linear-gradient(90deg, #e2e8f0, #ffffff)',
-                                backgroundClip: 'text',
-                                color: 'transparent',
-                                textShadow: '0 10px 30px rgba(255,255,255,0.1)',
-                            }}
-                        >
-                            Build your Next-Gen Project
-                        </div>
-                    </div>
-
-                    {/* Tech Dock */}
+                    {/* Premium Dock */}
                     <div
                         style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '24px',
-                            background: 'rgba(10, 10, 10, 0.8)',
-                            border: '1px solid rgba(255, 255, 255, 0.15)',
-                            padding: '16px 32px',
-                            borderRadius: '24px',
-                            boxShadow: '0 20px 40px -10px rgba(0,0,0,0.8)',
+                            gap: '40px',
+                            background: 'rgba(255, 255, 255, 0.02)',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            padding: '24px 48px',
+                            borderRadius: '32px',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
                         }}
                     >
-                        {/* Item 1 */}
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                            <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', border: '1px solid rgba(97, 218, 251, 0.3)', color: '#61DAFB' }}>
-                                ⚛
-                            </div>
-                            <div style={{ fontSize: '14px', fontWeight: 600, color: '#64748b' }}>Next.js</div>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ fontSize: '32px', opacity: 0.9 }}>⚛️</div>
+                            <div style={{ fontSize: '12px', fontWeight: 700, color: '#475569', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Next.js</div>
                         </div>
-
-                        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.1)' }} />
-
-                        {/* Item 2 */}
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                            <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', border: '1px solid rgba(104, 160, 99, 0.3)', color: '#68a063' }}>
-                                N
-                            </div>
-                            <div style={{ fontSize: '14px', fontWeight: 600, color: '#64748b' }}>Node.js</div>
+                        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.05)' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ fontSize: '32px', opacity: 0.9 }}>🛠️</div>
+                            <div style={{ fontSize: '12px', fontWeight: 700, color: '#475569', letterSpacing: '0.1em', textTransform: 'uppercase' }}>FullStack</div>
                         </div>
-
-                        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.1)' }} />
-
-                        {/* Item 3 */}
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                            <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', border: '1px solid rgba(167, 139, 250, 0.3)', color: '#a78bfa' }}>
-                                AI
-                            </div>
-                            <div style={{ fontSize: '14px', fontWeight: 600, color: '#64748b' }}>GenAI</div>
+                        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.05)' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ fontSize: '32px', opacity: 0.9 }}>🧠</div>
+                            <div style={{ fontSize: '12px', fontWeight: 700, color: '#475569', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Gen_AI</div>
                         </div>
-
-                        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.1)' }} />
-
-                        {/* Item 4 */}
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                            <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', border: '1px solid rgba(244, 114, 182, 0.3)', color: '#f472b6' }}>
-                                ☁
-                            </div>
-                            <div style={{ fontSize: '14px', fontWeight: 600, color: '#64748b' }}>Cloud</div>
+                        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.05)' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ fontSize: '32px', opacity: 0.9 }}>⚡</div>
+                            <div style={{ fontSize: '12px', fontWeight: 700, color: '#475569', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Vercel</div>
                         </div>
                     </div>
                 </div>
 
-                {/* Footer URL */}
+                {/* Footer Brand */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: '40px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                    }}
+                >
+                    <div style={{ width: '20px', height: '2px', background: '#a78bfa', opacity: 0.5 }} />
+                    <div style={{ color: '#475569', fontSize: '16px', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+                        sahilumraniya.dev
+                    </div>
+                    <div style={{ width: '20px', height: '2px', background: '#a78bfa', opacity: 0.5 }} />
+                </div>
+
+                {/* Corner Decoration */}
                 <div
                     style={{
                         position: 'absolute',
                         bottom: '30px',
-                        color: '#475569',
-                        fontSize: '16px',
-                        fontWeight: 500,
-                        letterSpacing: '0.05em',
-                        display: 'flex',
-                        alignItems: 'center',
-                        fontFamily: 'monospace',
+                        right: '30px',
+                        width: '100px',
+                        height: '100px',
+                        backgroundImage: 'radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.1) 0%, transparent 70%)',
                     }}
-                >
-                    sahilumraniya.dev
-                </div>
+                />
             </div>
         ),
         {

@@ -44,7 +44,7 @@ function StatusCard() {
     }, []);
 
     return (
-        <div className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col justify-between h-full">
+        <div className="ds-card p-6 flex flex-col justify-between h-full">
             <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 w-fit">
                     <span className="relative flex h-2 w-2">
@@ -71,7 +71,7 @@ function PhoneCard() {
     return (
         <Link href="https://wa.me/919327201427?text=Hi%20Sahil!%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20discuss%20a%20potential%20opportunity%20with%20you." target="_blank" rel="noreferrer">
             <div
-                className="group p-6 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col justify-between h-full transition-all hover:border-violet-500/50 hover:shadow-xl dark:hover:shadow-none hover:-translate-y-1"
+                className="ds-card group p-6 flex flex-col justify-between h-full transition-all hover:border-[var(--ds-card-border)] hover:border-violet-500/50 hover:brightness-105 hover:-translate-y-1"
             >
                 <div className="flex justify-between items-start mb-4">
                     <div className="p-2.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 group-hover:text-white group-hover:bg-violet-500 transition-colors">
@@ -142,7 +142,7 @@ export function Footer() {
 
                     {/* --- LEFT SIDE: Brand, Nav & CTA (Takes 40% width) --- */}
                     <div className="lg:w-5/12 flex flex-col">
-                        <div className="h-full p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col justify-between gap-10">
+                        <div className="ds-card h-full p-8 flex flex-col justify-between gap-10">
 
                             {/* Top: Brand */}
                             <div>
@@ -205,7 +205,6 @@ export function Footer() {
                             <EmailCard />
                         </div>
 
-                        {/* Row 3: Socials */}
                         <div className="grid grid-cols-4 gap-4 h-24">
                             {SOCIALS.map((social) => (
                                 <a
@@ -214,13 +213,16 @@ export function Footer() {
                                     target="_blank"
                                     rel="noreferrer"
                                     className={`
-                                        flex items-center justify-center rounded-3xl 
-                                        bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 
-                                        transition-all duration-300 group h-full
-                                        ${social.bg} hover:border-transparent
+                                        ds-card flex items-center justify-center 
+                                        transition-all duration-500 group h-full
+                                        ${social.bg} hover:border-transparent hover:-translate-y-1
+                                        hover:shadow-xl hover:scale-105 hover:rotate-1 hover:skew-x-1 hover:skew-y-1 hover:z-10 hover:translate-x-1
                                     `}
                                 >
-                                    <social.icon size={24} className="text-slate-400 group-hover:text-white transition-colors" />
+                                    <social.icon
+                                        size={24}
+                                        className="text-[var(--ds-text,currentColor)] opacity-50 group-hover:opacity-100 transition-all duration-300"
+                                    />
                                 </a>
                             ))}
                         </div>
@@ -230,10 +232,10 @@ export function Footer() {
                 {/* --- BOTTOM COPYRIGHT --- */}
                 <div className="flex justify-between items-center pt-8 border-t border-slate-200 dark:border-white/10">
                     <p className="text-sm text-slate-500 dark:text-slate-500">
-                        © {new Date().getFullYear()} Sahil Umraniya.
+                        © {new Date().getFullYear()} all rights reserved for sahilumraniya.dev
                     </p>
                     <p className="text-xs text-slate-400">
-                        Handcrafted with Next.js & ❤️
+                        Developed with Next.js by Sahil Umraniya.
                     </p>
                 </div>
 

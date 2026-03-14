@@ -48,11 +48,7 @@ export default function ImpactStats() {
                 >
                     {/* Light mode: clean gradient card | Dark mode: glass card */}
                     <div className="
-                        relative p-10 sm:p-16
-                        bg-gradient-to-br from-slate-900 via-violet-950 to-indigo-950
-                        dark:bg-gradient-to-br dark:from-slate-900/90 dark:via-violet-950/80 dark:to-indigo-950/90
-                        border border-slate-200/10 dark:border-white/10
-                        shadow-2xl shadow-violet-500/10 dark:shadow-none
+                        ds-card relative p-10 sm:p-16 border-[var(--ds-card-border)] overflow-hidden
                     ">
                         {/* Decorative gradient orbs */}
                         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-violet-600/20 rounded-full blur-[120px] pointer-events-none" />
@@ -72,13 +68,13 @@ export default function ImpactStats() {
 
                                     {/* Value */}
                                     <div className="relative z-10">
-                                        <div className="text-5xl md:text-6xl font-bold mb-3 tracking-tight text-white">
+                                        <div className="text-5xl md:text-6xl font-bold mb-3 tracking-tight text-[var(--ds-text,currentColor)]">
                                             <Counter value={stat.value} className='sm:text-6xl text-5xl' />
                                         </div>
                                     </div>
 
                                     {/* Label */}
-                                    <div className="text-sm font-medium text-white/60 uppercase tracking-[0.15em] group-hover:text-violet-300 transition-colors duration-500 max-w-[140px]">
+                                    <div className="text-sm font-medium opacity-60 uppercase tracking-[0.15em] group-hover:text-violet-500 transition-colors duration-500 max-w-[140px] text-[var(--ds-text,currentColor)]">
                                         {stat.label}
                                     </div>
 

@@ -54,7 +54,7 @@ export const WorkflowSection = () => {
                             )}
 
                             <div className="flex flex-col items-center text-center relative z-10">
-                                <div className="w-16 h-16 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-violet-500/50 transition-all duration-300">
+                                <div className="w-16 h-16 ds-card flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-violet-500/50 transition-all duration-300">
                                     <step.icon className="text-violet-500" size={28} />
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{step.title}</h3>

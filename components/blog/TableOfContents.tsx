@@ -65,8 +65,8 @@ export default function TableOfContents({ content }: { content: string }) {
 
     return (
         <div className="hidden xl:block w-72 shrink-0">
-            <div className="sticky top-28 p-6 rounded-2xl bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 space-y-4 shadow-sm dark:shadow-none">
-                <h3 className="font-bold text-slate-900 dark:text-slate-200 uppercase tracking-widest text-xs">Table of Contents</h3>
+            <div className="sticky top-28 p-6 ds-card space-y-4">
+                <h3 className="font-bold text-[var(--ds-text,currentColor)] uppercase tracking-widest text-xs opacity-70">Table of Contents</h3>
                 <nav className="flex flex-col space-y-2">
                     {headings.map((heading) => (
                         <a

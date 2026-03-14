@@ -23,7 +23,7 @@ const ExperienceSection = () => {
             <div className="space-y-8">
                 {EXPERIENCES.map((exp: any, i: number) => (
                     <div key={i} className="relative pl-8 border-l-2 border-slate-200 dark:border-white/10">
-                        <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-violet-500 ring-4 ring-white dark:ring-[#020617]"></div>
+                        <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-violet-500 ring-4 ring-[var(--ds-card-bg,white)]"></div>
                         <div className="flex flex-col sm:flex-row justify-between mb-2"><h3 className="text-xl font-bold text-slate-900 dark:text-white">{exp.title}</h3><span className="text-sm text-slate-500 dark:text-slate-400 font-mono">{exp.date}</span></div>
                         <div className="text-violet-600 dark:text-violet-400 font-medium mb-4">{exp.company_name}</div>
                         <ul className="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">{exp.points.map((pt: string, j: number) => <li key={j}>{pt}</li>)}</ul>

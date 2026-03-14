@@ -4,6 +4,9 @@ import Script from "next/script";
 import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import { DesignSystemProvider } from "@/components/design-system-provider";
+import { DesignCustomizer } from "@/components/DesignCustomizer";
+import { GlobalBackground } from "@/components/GlobalBackground";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -172,7 +175,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <DesignSystemProvider>
+            {children}
+            <GlobalBackground />
+            <DesignCustomizer />
+          </DesignSystemProvider>
         </ThemeProvider>
 
         {/* Google Analytics — single instance via @next/third-parties */}

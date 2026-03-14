@@ -80,10 +80,9 @@ export default function ServicesSection() {
                             transition={{ delay: idx * 0.1 }}
                             whileHover={{ y: -5 }}
                             className={`
-                                group relative bg-white dark:bg-white/5 backdrop-blur-sm 
-                                p-8 rounded-3xl border border-slate-200 dark:border-white/10 
-                                ${service.hoverBorder} shadow-sm hover:shadow-2xl dark:hover:shadow-none 
-                                transition-all duration-300
+                                ds-card
+                                group relative p-8
+                                hover:brightness-105 transition-all duration-300
                             `}
                         >
                             {/* Inner Gradient Shine on Hover */}
@@ -94,16 +93,16 @@ export default function ServicesSection() {
                                     <service.icon className={`w-7 h-7 ${service.iconColor}`} />
                                 </div>
 
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                                <h3 className="text-xl font-bold text-[var(--ds-text,currentColor)] mb-3">
                                     {service.title}
                                 </h3>
-                                <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed text-sm h-20">
+                                <p className="text-[var(--ds-text,currentColor)] opacity-70 mb-8 leading-relaxed text-sm">
                                     {service.desc}
                                 </p>
 
                                 <ul className="space-y-3">
                                     {service.features.map((feat, fIdx) => (
-                                        <li key={fIdx} className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+                                        <li key={fIdx} className="flex items-start gap-3 text-sm text-[var(--ds-text,currentColor)] opacity-90">
                                             <div className={`mt-0.5 p-1 rounded-full ${service.bgColor} ${service.checkColor} flex-shrink-0`}>
                                                 <Check size={10} strokeWidth={3} />
                                             </div>

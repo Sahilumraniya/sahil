@@ -157,7 +157,7 @@ const InteractiveProfileCard = () => {
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="group relative rounded-3xl bg-white dark:bg-[#0f172a] text-slate-700 dark:text-slate-200 shadow-2xl transition-all duration-200 ease-out border border-slate-200 dark:border-slate-800"
+                className="group relative ds-card text-slate-700 dark:text-slate-200 shadow-2xl transition-all duration-200 ease-out"
                 style={{
                     transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale3d(1, 1, 1)`,
                     transformStyle: "preserve-3d",
@@ -261,7 +261,7 @@ const InteractiveProfileCard = () => {
                 </div>
 
                 {/* Terminal Footer - Pushed slightly less forward */}
-                <div className="bg-slate-100/90 dark:bg-black/40 backdrop-blur-md p-4 border-t border-slate-200 dark:border-white/5 text-xs font-mono text-slate-600 dark:text-slate-400 rounded-b-3xl relative overflow-hidden" style={{ transform: "translateZ(10px)" }}>
+                <div className="mb-6 bg-white/40 dark:bg-black/40 backdrop-blur-md p-4 border border-slate-200 dark:border-white/5 text-[10px] font-mono text-slate-600 dark:text-slate-400 rounded-2xl relative overflow-hidden" style={{ transform: "translateZ(10px)" }}>
                     <div className="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
                     <div className="flex flex-col gap-1.5 z-10 relative">
                         <div className="flex items-center gap-2">
@@ -281,7 +281,7 @@ const InteractiveProfileCard = () => {
 }
 
 const GlassCard = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-    <div className={`rounded-2xl bg-white/60 dark:bg-[#0f172a]/60 backdrop-blur-md border border-slate-200 dark:border-white/10 shadow-xl shadow-slate-200/50 dark:shadow-none ${className}`}>
+    <div className={`ds-card ${className}`}>
         {children}
     </div>
 );
@@ -411,7 +411,7 @@ export default function ResumePage() {
     const contentRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 max-w-7xl mx-auto" ref={contentRef}>
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 max-w-7xl mx-auto pt-18" ref={contentRef}>
 
             <div className="lg:w-1/3 flex flex-col items-center">
                 <div className="w-full max-w-md sticky top-8 space-y-6">
@@ -424,7 +424,7 @@ export default function ResumePage() {
                         rel="noopener noreferrer"
                     >
                         <button
-                            className="w-full group relative overflow-hidden rounded-xl bg-violet-600 p-4 text-white shadow-[0_10px_20px_-10px_rgba(124,58,237,0.5)] transition-all hover:bg-violet-700 hover:scale-[1.02] hover:shadow-[0_20px_25px_-12px_rgba(124,58,237,0.6)] active:scale-[0.98] mb-4"
+                            className="mt-4 w-full group relative overflow-hidden rounded-xl bg-violet-600 p-4 text-white shadow-[0_10px_20px_-10px_rgba(124,58,237,0.5)] transition-all hover:bg-violet-700 hover:scale-[1.02] hover:shadow-[0_20px_25px_-12px_rgba(124,58,237,0.6)] active:scale-[0.98]"
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:animate-[shimmer_1.5s_infinite]" />
                             <div className="relative flex items-center justify-center gap-2 font-bold tracking-wide">

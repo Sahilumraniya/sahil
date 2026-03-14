@@ -80,42 +80,63 @@ export default function AboutPage() {
             />
 
             {/* 1. Header Hero for About Page */}
-            <section className="relative py-16 sm:py-20 px-4 sm:px-6 container mx-auto overflow-hidden">
+            <section className="relative py-4 sm:py-8 px-4 sm:px-6 container mx-auto">
+                {/* Background Glow Effect */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full bg-gradient-to-tr from-violet-500/10 via-transparent to-indigo-500/10 blur-[100px] pointer-events-none -z-10" />
 
-                {/* Decorative Tech Pattern Illustration */}
-                <div className="absolute top-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] opacity-[0.06] dark:opacity-[0.04] pointer-events-none -z-10 animate-float">
-                    <Image
-                        src="/tech-pattern.png"
-                        alt="Abstract Tech Pattern"
-                        width={500}
-                        height={500}
-                        className="w-full h-full object-contain"
-                    />
-                </div>
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 max-w-6xl mx-auto">
+                    {/* Photo Container */}
+                    <div className="relative group">
+                        {/* Animated Ring */}
+                        <div className="absolute -inset-4 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-[2.5rem] opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-700 animate-pulse"></div>
 
-                <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-                    {/* Photo */}
-                    <div className="relative flex-shrink-0 w-48 h-48 md:w-64 md:h-64">
-                        <div className="absolute -inset-2 bg-gradient-to-br from-violet-500 via-indigo-500 to-purple-500 rounded-3xl opacity-20 blur-md"></div>
-                        <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-white/80 dark:border-white/10 shadow-2xl group cursor-pointer">
+                        {/* Image Frame */}
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-[2rem] overflow-hidden border border-white/80 dark:border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+                            {/* Inner Glow */}
+                            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
                             <Image
                                 src="/sahil-about.png"
                                 alt="Sahil Umraniya"
                                 fill
-                                className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                sizes="(max-width: 768px) 192px, 256px"
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                priority
+                                sizes="(max-width: 768px) 256px, 320px"
                             />
                         </div>
+
+                        {/* Floating Tech Badge (Optional/Aesthetic) */}
+                        <div className="absolute -bottom-4 -right-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-xl shadow-xl flex items-center gap-2 animate-bounce hover:animate-none transition-all cursor-default">
+                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                            <span className="text-sm font-bold tracking-tight text-slate-800 dark:text-slate-200">Available for Work</span>
+                        </div>
                     </div>
-                    {/* Text */}
-                    <div className="text-center md:text-left">
-                        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4">
+
+                    {/* Text Content */}
+                    <div className="flex-1 text-center lg:text-left space-y-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-900/30 border border-violet-100 dark:border-violet-800 text-violet-600 dark:text-violet-400 text-sm font-semibold tracking-wide uppercase">
+                            <span>The Journey</span>
+                        </div>
+
+                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
                             The Person Behind <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">The Pixels</span>
                         </h1>
-                        <p className="text-lg text-slate-500 dark:text-slate-400 max-w-xl">
-                            Based in Ahmedabad, Engineering for the World. I specialize in bespoke software solutions and remote-first collaboration for global clients.
+
+                        <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                            Based in Ahmedabad, Engineering for the World. I specialize in building <span className="text-slate-900 dark:text-white font-medium italic underline decoration-violet-500/30">bespoke software solutions</span> and remote-first collaboration for high-growth global startups.
                         </p>
+
+                        {/* <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                            <div className="flex -space-x-3">
+                                {[1, 2, 3, 4].map(i => (
+                                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-500">
+                                        +
+                                    </div>
+                                ))}
+                            </div>
+                            <span className="text-sm text-slate-500 dark:text-slate-500 font-medium">Trusted by founders globally</span>
+                        </div> */}
                     </div>
                 </div>
             </section>

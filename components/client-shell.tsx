@@ -109,31 +109,15 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 export default function ClientShell() {
     return (
         <div className="min-h-screen transition-colors duration-300 overflow-x-hidden relative w-full">            <MouseFollower />
-
-            {/* Background */}
             <div className="fixed inset-0 -z-10 h-full w-full bg-slate-50 dark:bg-[#020617] transition-colors duration-500">
                 <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-violet-200 dark:bg-violet-900/20 rounded-full blur-[120px] animate-pulse opacity-50"></div>
                 <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blue-200 dark:bg-blue-900/20 rounded-full blur-[120px] animate-pulse delay-1000 opacity-50"></div>
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px] dark:opacity-20"></div>
             </div>
 
-            <main className="pt-32 w-full display:flex flex-col items-center justify-center px-4">
-                <div className="space-y-32">
-
-                    {/* ═══════════════ HERO SECTION — SPLIT LAYOUT ═══════════════ */}
+            <main className="pt-24 w-full display:flex flex-col items-center justify-center px-4">
+                <div className="space-y-16 sm:space-y-24">
                     <section className="container mx-auto px-4 sm:px-6 relative">
-
-                        {/* Decorative Tech Network Background Illustration */}
-                        {/* <div className="absolute -top-20 -right-20 w-[400px] md:w-[600px] h-[400px] md:h-[600px] opacity-[0.08] dark:opacity-[0.05] pointer-events-none -z-10">
-                            <Image
-                                src="/tech-network.png"
-                                alt="Abstract Tech Network"
-                                width={600}
-                                height={600}
-                                className="w-full h-full object-contain"
-                            />
-                        </div> */}
-
                         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
                             {/* LEFT: Text Content */}
@@ -168,12 +152,12 @@ export default function ClientShell() {
 
                                     {/* CTA Buttons */}
                                     <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
-                                        <a href="/projects" className="group w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white rounded-2xl font-bold text-base hover:shadow-xl hover:shadow-violet-500/25 transition-all duration-300 flex items-center justify-center gap-2">
+                                        <a href="/projects" className="ds-btn group w-full sm:w-auto px-8 py-4 font-bold text-base hover:brightness-110 transition-all duration-300 flex items-center justify-center gap-2">
                                             <Sparkles size={18} />
                                             Explore Portfolio
                                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                         </a>
-                                        <a href="/resume" className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-2xl font-bold text-base hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg hover:shadow-black/5 transition-all duration-300">
+                                        <a href="/resume" className="ds-btn w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-[var(--ds-btn-bg,white)] text-slate-800 dark:text-white font-bold text-base hover:brightness-110 flex items-center justify-center">
                                             View Resume
                                         </a>
                                     </div>
@@ -222,17 +206,17 @@ export default function ClientShell() {
                                         </div>
 
                                         {/* Floating badges around photo */}
-                                        <div className="absolute -top-4 -left-4 flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg text-sm font-medium text-slate-700 dark:text-slate-300 animate-float">
+                                        <div className="absolute -top-4 -left-4 flex items-center gap-2 px-4 py-2.5 ds-card text-sm font-medium text-slate-700 dark:text-slate-300 animate-float">
                                             <Code2 size={16} className="text-violet-500" />
                                             Next.js & React
                                         </div>
 
-                                        <div className="absolute -bottom-3 -right-3 flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg text-sm font-medium text-slate-700 dark:text-slate-300 animate-float" style={{ animationDelay: '1s' }}>
+                                        <div className="absolute -bottom-3 -right-3 flex items-center gap-2 px-4 py-2.5 ds-card text-sm font-medium text-slate-700 dark:text-slate-300 animate-float" style={{ animationDelay: '1s' }}>
                                             <Layers size={16} className="text-indigo-500" />
                                             System Design
                                         </div>
 
-                                        <div className="absolute top-1/2 -right-6 hidden xl:flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg text-sm font-medium text-slate-700 dark:text-slate-300 animate-float" style={{ animationDelay: '2s' }}>
+                                        <div className="absolute top-1/2 -right-6 hidden xl:flex items-center gap-2 px-4 py-2.5 ds-card text-sm font-medium text-slate-700 dark:text-slate-300 animate-float" style={{ animationDelay: '2s' }}>
                                             <Cpu size={16} className="text-emerald-500" />
                                             AI & LLMs
                                         </div>

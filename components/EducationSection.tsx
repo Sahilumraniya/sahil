@@ -58,7 +58,7 @@ export default function EducationSection() {
                                 viewport={{ once: true }}
                                 className="pl-8 border-l-2 border-slate-200 dark:border-slate-800 relative pb-12 last:pb-0"
                             >
-                                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-black border-2 border-violet-500"></div>
+                                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[var(--ds-card-bg,white)] border-2 border-[var(--ds-card-border,theme(colors.violet.500))]"></div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">{edu.degree}</h3>
                                 <p className="text-slate-600 dark:text-slate-400 font-medium mb-2">{edu.school}</p>
                                 <span className="inline-block px-3 py-1 bg-slate-100 dark:bg-white/10 rounded-full text-xs font-semibold text-slate-500 mb-4">
@@ -84,16 +84,15 @@ export default function EducationSection() {
                             {CERTIFICATIONS.map((cert, idx) => (
                                 <motion.div
                                     key={idx}
-                                    whileHover={{ scale: 1.02 }}
-                                    className="p-6 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-4"
+                                    className="ds-card p-6 flex items-center gap-4 cursor-pointer hover:scale-[1.02] transition-transform"
                                     onClick={() => window.open(cert.link, '_blank')}
                                 >
                                     <div className={`p-3 rounded-full bg-${cert.color}-100 dark:bg-${cert.color}-900/20 text-${cert.color}-600`}>
                                         <cert.icon size={20} />
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-slate-900 dark:text-white">{cert.title}</h3>
-                                        <p className="text-sm text-slate-500">{cert.issuer} • {cert.date}</p>
+                                        <h3 className="font-bold text-[var(--ds-text,currentColor)] opacity-90">{cert.title}</h3>
+                                        <p className="text-sm opacity-60">{cert.issuer} • {cert.date}</p>
                                     </div>
                                 </motion.div>
                             ))}

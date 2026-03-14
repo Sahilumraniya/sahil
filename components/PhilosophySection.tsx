@@ -46,9 +46,9 @@ export default function PhilosophySection() {
                             <br /><br />
                             As a Full Stack Engineer, I bring a holistic view to development. I don't just patch bugs; I engineer solutions that stand the test of time.
                         </p>
-                        <a href="/about" className="text-violet-600 font-bold hover:underline">
+                        {/* <a href="/about" className="text-violet-600 font-bold hover:underline">
                             Read more about my background &rarr;
-                        </a>
+                        </a> */}
                     </div>
 
                     <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -56,11 +56,11 @@ export default function PhilosophySection() {
                             <motion.div
                                 key={idx}
                                 whileHover={{ y: -5 }}
-                                className="bg-white dark:bg-black p-6 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm"
+                                className="ds-card p-6 shadow-sm"
                             >
                                 <val.icon className={`w-8 h-8 ${val.color} mb-4`} />
-                                <h3 className="font-bold text-slate-900 dark:text-white mb-2">{val.title}</h3>
-                                <p className="text-sm text-slate-600 dark:text-slate-400">
+                                <h3 className="font-bold text-[var(--ds-text,currentColor)] mb-2">{val.title}</h3>
+                                <p className="text-sm text-[var(--ds-text,currentColor)] opacity-70">
                                     {val.desc}
                                 </p>
                             </motion.div>

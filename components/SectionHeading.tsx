@@ -31,7 +31,7 @@ export function SectionHeading({ badge, title, description }: SectionHeadingProp
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4"
+                className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--ds-text,currentColor)] mb-4"
             >
                 {title}
             </motion.h2>
@@ -46,7 +46,7 @@ export function SectionHeading({ badge, title, description }: SectionHeadingProp
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="max-w-2xl text-lg text-slate-500 dark:text-slate-400 leading-relaxed"
+                    className="max-w-2xl text-lg text-[var(--ds-text,currentColor)] opacity-60 leading-relaxed"
                 >
                     {description}
                 </motion.p>

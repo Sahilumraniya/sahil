@@ -80,12 +80,11 @@ export default function FeaturedProjects() {
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1, duration: 0.6 }}
                         className={`
+                            ds-card
                             group relative flex flex-col p-8
-                            rounded-3xl overflow-hidden
-                            ${project.lightBg} ${project.darkBg}
-                            border border-slate-200/60 dark:border-white/5
+                            overflow-hidden
                             transition-all duration-500
-                            hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-none
+                            hover:-translate-y-2 hover:brightness-105
                         `}
                     >
                         {/* Gradient accent bar at top */}
@@ -107,7 +106,7 @@ export default function FeaturedProjects() {
                         </div>
 
                         {/* Content */}
-                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-indigo-600 dark:group-hover:from-violet-400 dark:group-hover:to-indigo-400 transition-all duration-300">
+                        <h3 className="text-2xl font-bold text-[var(--ds-text,currentColor)] mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-indigo-600 dark:group-hover:from-violet-400 dark:group-hover:to-indigo-400 transition-all duration-300">
                             {project.title}
                         </h3>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 flex-1 text-base">
@@ -127,7 +126,7 @@ export default function FeaturedProjects() {
                             <div className="flex gap-2">
                                 {project.github !== '#' && (
                                     <a href={project.github} target="_blank" rel="noreferrer" aria-label="GitHub Repo"
-                                        className="p-2.5 rounded-xl bg-white/80 dark:bg-white/5 text-slate-500 hover:text-slate-900 dark:hover:text-white border border-slate-200/60 dark:border-white/10 transition-colors">
+                                        className="p-2.5 rounded-xl bg-white/80 dark:bg-white/5 opacity-70 hover:opacity-100 hover:text-[var(--ds-text,currentColor)] border border-slate-200/60 dark:border-white/10 transition-colors">
                                         <Github size={18} />
                                     </a>
                                 )}
@@ -147,7 +146,7 @@ export default function FeaturedProjects() {
             <div className="mt-14 text-center">
                 <Link
                     href="/projects"
-                    className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-200 dark:hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-black/5"
+                    className="ds-btn inline-flex items-center justify-center gap-2 px-8 py-3.5 font-semibold transition-all duration-300 hover:opacity-90"
                 >
                     View Complete Portfolio <ArrowUpRight size={16} />
                 </Link>

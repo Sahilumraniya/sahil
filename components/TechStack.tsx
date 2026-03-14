@@ -102,10 +102,7 @@ export default function TechStack() {
                         variants={itemVariants}
                         className={`
               ${cat.span} group relative overflow-hidden rounded-3xl 
-              bg-white dark:bg-slate-900/50 backdrop-blur-sm
-              border border-slate-200 dark:border-slate-800 
-              ${cat.border} transition-colors duration-300
-              shadow-sm hover:shadow-xl dark:shadow-none
+              ds-card ${cat.border} transition-colors duration-300
             `}
                     >
                         {/* Dynamic Background Gradient on Hover */}
@@ -117,7 +114,7 @@ export default function TechStack() {
                                 <div className={`p-3 rounded-2xl ${cat.bg} ${cat.text} group-hover:scale-110 transition-transform duration-300 ring-1 ring-inset ring-black/5 dark:ring-white/10`}>
                                     {cat.icon}
                                 </div>
-                                <h3 className="font-bold text-xl text-slate-900 dark:text-white">
+                                <h3 className="font-bold text-xl text-[var(--ds-text,currentColor)]">
                                     {cat.title}
                                 </h3>
                             </div>
@@ -129,11 +126,12 @@ export default function TechStack() {
                                         key={sIdx}
                                         className={`
                       inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold
-                      text-slate-600 dark:text-slate-300
+                      text-[var(--ds-text,currentColor)] opacity-80
                       bg-slate-100 dark:bg-slate-800/80
                       border border-transparent
                       group-hover:border-${cat.color}-500/20
                       group-hover:text-${cat.color}-600 dark:group-hover:text-${cat.color}-400
+                      group-hover:opacity-100
                       group-hover:bg-${cat.color}-500/5
                       transition-all duration-300 cursor-default
                     `}
