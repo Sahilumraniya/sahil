@@ -165,7 +165,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR44ZS7M"
           height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
@@ -201,7 +204,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         {/* Tawk.to Chat Widget */}
         <Script
           id="tawk-widget"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
             var Tawk_API = Tawk_API || { }, Tawk_LoadStart = new Date();

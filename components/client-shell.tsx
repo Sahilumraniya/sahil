@@ -11,15 +11,41 @@ import {
     Package,
 } from 'lucide-react';
 import Image from 'next/image';
-import TechStack from './TechStack';
-import { SectionHeading } from './SectionHeading';
-import { FAQSection } from './FAQSection';
-import ServicesSection from './ServicesSection';
-import ImpactStats from './ImpactStats';
-import Testimonials from './Testimonials';
-import CTABanner from './CTABanner';
-import ExperienceSection from './ExperienceSection';
-import FeaturedProjects from './FeaturedProjects';
+import dynamic from 'next/dynamic';
+
+// Dynamic imports for below-the-fold components
+const ImpactStats = dynamic(() => import('./ImpactStats'), {
+    ssr: true,
+    loading: () => <div className="h-[400px] w-full" />
+});
+const ServicesSection = dynamic(() => import('./ServicesSection'), {
+    ssr: true,
+    loading: () => <div className="h-[600px] w-full" />
+});
+const FeaturedProjects = dynamic(() => import('./FeaturedProjects'), {
+    ssr: true,
+    loading: () => <div className="h-[800px] w-full" />
+});
+const Testimonials = dynamic(() => import('./Testimonials'), {
+    ssr: true,
+    loading: () => <div className="h-[500px] w-full" />
+});
+const TechStack = dynamic(() => import('./TechStack'), {
+    ssr: true,
+    loading: () => <div className="h-[600px] w-full" />
+});
+const ExperienceSection = dynamic(() => import('./ExperienceSection'), {
+    ssr: true,
+    loading: () => <div className="h-[600px] w-full" />
+});
+const FAQSection = dynamic(() => import('./FAQSection').then(mod => mod.FAQSection), {
+    ssr: true,
+    loading: () => <div className="h-[400px] w-full" />
+});
+const CTABanner = dynamic(() => import('./CTABanner'), {
+    ssr: true,
+    loading: () => <div className="h-[300px] w-full" />
+});
 
 /* -------------------------------------------------------------------------- */
 /* UTILITY COMPONENTS                                                         */
@@ -83,10 +109,12 @@ const ScrambleText = ({ text }: { text: string }) => {
     );
 };
 
-const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
-    const [isVisible, setIsVisible] = useState(false);
+const FadeIn = ({ children, delay = 0, instant = false }: { children: React.ReactNode; delay?: number; instant?: boolean }) => {
+    const [isVisible, setIsVisible] = useState(instant);
     const domRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
+        if (instant) return;
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -98,9 +126,17 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
         const currentElement = domRef.current;
         if (currentElement) observer.observe(currentElement);
         return () => { if (currentElement) observer.unobserve(currentElement); };
-    }, []);
+    }, [instant]);
+
     return (
-        <div ref={domRef} className={`fade-up ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${delay}ms` }}>
+        <div
+            ref={domRef}
+            className={`fade-up ${isVisible ? 'visible' : ''}`}
+            style={{
+                transitionDelay: `${delay}ms`,
+                ...(instant ? { opacity: 1, transform: 'none', transition: 'none' } : {})
+            }}
+        >
             {children}
         </div>
     );
@@ -110,8 +146,8 @@ export default function ClientShell() {
     return (
         <div className="min-h-screen transition-colors duration-300 overflow-x-hidden relative w-full">            <MouseFollower />
             <div className="fixed inset-0 -z-10 h-full w-full bg-slate-50 dark:bg-[#020617] transition-colors duration-500">
-                <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-violet-200 dark:bg-violet-900/20 rounded-full blur-[120px] animate-pulse opacity-50"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blue-200 dark:bg-blue-900/20 rounded-full blur-[120px] animate-pulse delay-1000 opacity-50"></div>
+                <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-violet-200 dark:bg-violet-900/10 rounded-full blur-[120px] opacity-50"></div>
+                <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blue-200 dark:bg-blue-900/10 rounded-full blur-[120px] opacity-50"></div>
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px] dark:opacity-20"></div>
             </div>
 
@@ -122,7 +158,7 @@ export default function ClientShell() {
 
                             {/* LEFT: Text Content */}
                             <div className="flex-1 text-center lg:text-left relative">
-                                <FadeIn>
+                                <div className="opacity-100 transform-none">
                                     {/* Availability badge */}
                                     <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-semibold mb-8">
                                         <span className="relative flex h-2.5 w-2.5">
@@ -183,12 +219,12 @@ export default function ClientShell() {
                                             <span>Oracle AI Certified</span>
                                         </div>
                                     </div>
-                                </FadeIn>
+                                </div>
                             </div>
 
                             {/* RIGHT: Professional Photo */}
                             <div className="flex-shrink-0 w-full max-w-sm lg:max-w-md">
-                                <FadeIn delay={200}>
+                                <div className="opacity-100 transform-none">
                                     <div className="relative">
                                         {/* Gradient border ring */}
                                         <div className="absolute -inset-3 bg-gradient-to-br from-violet-500 via-indigo-500 to-purple-500 rounded-[2rem] opacity-20 blur-lg"></div>
@@ -202,6 +238,7 @@ export default function ClientShell() {
                                                 height={500}
                                                 className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
                                                 priority
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                                             />
                                         </div>
 
@@ -221,7 +258,7 @@ export default function ClientShell() {
                                             AI & LLMs
                                         </div>
                                     </div>
-                                </FadeIn>
+                                </div>
                             </div>
 
                         </div>
