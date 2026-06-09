@@ -23,7 +23,7 @@ const FEATURED_PROJECTS = [
         title: "Web Panda AI",
         tech: ["OpenAI", "Next.js", "PostgreSQL"],
         desc: "Freelance marketplace with LLM-based resume parsing and AI-powered candidate matching.",
-        link: "https://webpand.ai",
+        link: "https://webpanda.ai",
         github: "#",
         icon: BrainCircuit,
         gradient: "from-violet-500 to-purple-500",
