@@ -1,62 +1,88 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Package, Layout, Server, BrainCircuit, Github, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Package, Layout, Server, BrainCircuit, Github, ExternalLink, Terminal } from 'lucide-react';
 import Link from 'next/link';
 import { SectionHeading } from "./SectionHeading";
 
 const FEATURED_PROJECTS = [
     {
-        title: "Retro Table",
-        tech: ["React", "TypeScript", "NPM"],
-        desc: "A headless, high-performance React hook for building complex data tables. Features sorting, pagination, and filtering out of the box.",
-        link: "https://www.npmjs.com/package/retro-table",
-        github: "#",
-        icon: Package,
-        gradient: "from-blue-500 to-cyan-500",
-        lightBg: "bg-blue-50",
-        darkBg: "dark:bg-blue-950/30",
-        accent: "text-blue-600 dark:text-blue-400",
-        tag: "NPM Package"
+        title: "Self-Hosted Server Platform",
+        tech: ["Next.js", "systemd", "Caddy", "MongoDB"],
+        desc: "Internal platform for process supervision via systemd, Caddy reverse proxy TLS management, and MongoDB control panel.",
+        link: "https://server.sahilumraniya.dev/",
+        github: "https://github.com/sahilumraniya",
+        icon: Terminal,
+        gradient: "from-cyan-500 to-blue-500",
+        lightBg: "bg-cyan-50",
+        darkBg: "dark:bg-cyan-950/30",
+        accent: "text-cyan-600 dark:text-cyan-400",
+        tag: "DevOps & Infrastructure"
     },
     {
-        title: "Web Panda AI",
-        tech: ["OpenAI", "Next.js", "PostgreSQL"],
-        desc: "Freelance marketplace with LLM-based resume parsing and AI-powered candidate matching.",
-        link: "https://webpanda.ai",
-        github: "#",
+        title: "WebPanda Multi-Tenant AI Platform",
+        tech: ["Next.js", "Firebase", "AWS S3", "OpenAI"],
+        desc: "Multi-tenant SaaS marketplace featuring LLM resume parsing, RAG candidate matching, and zero-server-overhead S3 uploads.",
+        link: "http://webpanda.ai",
+        github: "https://github.com/sahilumraniya",
         icon: BrainCircuit,
         gradient: "from-violet-500 to-purple-500",
         lightBg: "bg-violet-50",
         darkBg: "dark:bg-violet-950/30",
         accent: "text-violet-600 dark:text-violet-400",
-        tag: "Full Stack App"
+        tag: "Multi-Tenant SaaS"
     },
     {
-        title: "Retro Form",
-        tech: ["React", "Zod", "Tailwind"],
-        desc: "Advanced form builder with type-safe validation and dynamic layout generation.",
-        link: "https://retroform.io",
-        github: "#",
-        icon: Layout,
+        title: "Retro Form & Retro Table",
+        tech: ["React", "TypeScript", "Zod", "NPM"],
+        desc: "Headless data table hook for sorting/filtering and schema-driven (JSON/Zod) form generator published on NPM.",
+        link: "https://www.npmjs.com/package/retro-table",
+        github: "https://github.com/sahilumraniya",
+        icon: Package,
         gradient: "from-indigo-500 to-blue-500",
         lightBg: "bg-indigo-50",
         darkBg: "dark:bg-indigo-950/30",
         accent: "text-indigo-600 dark:text-indigo-400",
-        tag: "Developer Tool"
+        tag: "Developer Tooling"
     },
     {
-        title: "Enterprise Multi-Service Suite",
-        tech: ["React", "Node.js", "Express", "MongoDB"],
-        desc: "Comprehensive enterprise multi-service platform featuring high-conversion landing engines, server task queues, booking workflows, and responsive admin analytics dashboards.",
-        link: "https://github.com/Sahilumraniya",
-        github: "https://github.com/Sahilumraniya",
-        icon: Layout,
+        title: "POS & Operations ERP Suite",
+        tech: ["Next.js", "Prisma", "MySQL", "Socket.io"],
+        desc: "Real-time Point of Sale and inventory ERP for restaurants with live table state and WebSocket terminal sync.",
+        link: "https://restaurant-management-system.sahilumraniya.dev/",
+        github: "https://github.com/sahilumraniya",
+        icon: Server,
+        gradient: "from-emerald-500 to-teal-500",
+        lightBg: "bg-emerald-50",
+        darkBg: "dark:bg-emerald-950/30",
+        accent: "text-emerald-600 dark:text-emerald-400",
+        tag: "Full Stack ERP"
+    },
+    {
+        title: "ReplyMe — AI Support Platform",
+        tech: ["Conversational AI", "RAG", "Rasa"],
+        desc: "AI-driven customer support platform using Rasa and RAG pipelines for domain-specific QA over structured/unstructured knowledge.",
+        link: "https://github.com/sahilumraniya",
+        github: "https://github.com/sahilumraniya",
+        icon: BrainCircuit,
         gradient: "from-pink-500 to-rose-500",
         lightBg: "bg-pink-50",
         darkBg: "dark:bg-pink-950/30",
         accent: "text-pink-600 dark:text-pink-400",
-        tag: "Enterprise Suite"
+        tag: "Conversational AI"
+    },
+    {
+        title: "Distributed Redis Queue Processor",
+        tech: ["Redis", "Node.js", "System Design"],
+        desc: "Production-grade async job queue supporting batch, delayed, and event-driven workloads with idempotency guarantees.",
+        link: "https://github.com/sahilumraniya",
+        github: "https://github.com/sahilumraniya",
+        icon: Server,
+        gradient: "from-amber-500 to-orange-500",
+        lightBg: "bg-amber-50",
+        darkBg: "dark:bg-amber-950/30",
+        accent: "text-amber-600 dark:text-amber-400",
+        tag: "System Design"
     },
 ];
 

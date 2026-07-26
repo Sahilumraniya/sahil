@@ -30,15 +30,14 @@ import { useRef, useState, useEffect } from 'react';
 
 const RESUME_DATA = {
     name: "Sahil Umraniya",
-    role: "Full Stack & Backend Engineer",
-    summary: "Software engineer with 2+ years of experience building scalable, production-grade web applications. Strong focus on backend architecture, API performance, and distributed job processing. Hands-on experience with Generative AI systems, RAG, and developer productivity tooling.",
+    role: "Full Stack Engineer | Generative AI & RAG Systems | Cloud & DevOps Infrastructure",
+    summary: "Full-stack software engineer with 2+ years shipping production systems on React, Next.js, and Node.js. Comfortable moving between application code, distributed systems (Redis-backed job queues, multi-tenant architecture), self-hosted infrastructure (Linux, systemd, Caddy), and applied Generative AI (RAG pipelines, LLM integration). Built and shipped 15+ production-grade applications across SaaS, e-commerce, and mobile.",
     location: "Ahmedabad, India",
     email: "sahilumraniya9512@gmail.com",
     github: "https://github.com/sahilumraniya",
     linkedin: "https://linkedin.com/in/sahilumraniya",
     website: "https://sahilumraniya.dev",
     phone: "+91 9327201427",
-
 };
 
 const EXPERIENCES = [
@@ -46,49 +45,60 @@ const EXPERIENCES = [
         title: "Software Engineer (Full Stack)",
         company_name: "Smartters Software",
         date: "Feb 2024 - Present",
+        location: "Ahmedabad, India",
         points: [
-            "Designed and shipped full-stack features using React, Next.js, and Node.js for production-scale systems.",
-            "Optimized backend APIs and database access patterns, reducing average response latency by over 30%.",
-            "Architected a Redis-backed asynchronous job processing system supporting batch, delayed, and event-driven workflows.",
-            "Built schema-driven, reusable form and table abstractions, reducing frontend duplication by 50%.",
-            "Implemented multilingual support, scheduled background jobs, and real-time complaint tracking workflows."
+            "Designed and shipped full-stack features using React, Next.js, and Node.js/Express for production-scale systems.",
+            "Architected a Redis-backed asynchronous job processing system (Feathers.js/Express) supporting batch, delayed, and event-driven workflows with idempotency guarantees.",
+            "Built schema-driven, reusable form and table abstractions (Retro Form, Retro Table), reducing frontend duplication by 50%, and implemented multilingual support with real-time complaint tracking workflows."
         ],
     },
 ];
 
 const PROJECTS = [
     {
-        title: "ReplyMe — AI Customer Support",
-        tech: "Conversational AI | RAG | Rasa",
-        description: "AI-driven customer support chatbot using Rasa and RAG pipelines. Enabled domain-specific QA by indexing structured/unstructured knowledge bases.",
-        link: ""
+        title: "Self-Hosted Server Management Platform",
+        tech: "Next.js (App Router) | MongoDB/Mongoose | Tailwind | systemd | Caddy",
+        description: "Built an internal platform to manage self-hosted infrastructure: process supervision via systemd, reverse proxy and TLS via Caddy, and a Next.js/MongoDB control panel.",
+        link: "https://server.sahilumraniya.dev/"
     },
     {
-        title: "Retro Form — Form Engine",
-        tech: "React | JSON Schema",
-        description: "Configuration-driven form engine that dynamically renders complex UI from JSON schemas. Built official product website with docs.",
-        link: "https://retroform.io"
-    },
-    {
-        title: "Retro Table — Data Table Library",
-        tech: "React | NPM Package",
-        description: "Reusable React data table library enabling schema-based sorting, filtering, and pagination. Adopted across multiple projects.",
+        title: "Retro Form & Retro Table — Developer Tooling",
+        tech: "React | TypeScript | Zod | NPM",
+        description: "Published Retro Table, a headless React hook for sorting, pagination, and filtering, and Retro Form, a schema-driven (JSON/Zod) form generator with dynamic field dependencies.",
         link: "https://www.npmjs.com/package/retro-table"
     },
     {
-        title: "WebPanda.AI — Freelance Marketplace",
-        tech: "Next.js | Firebase | AI",
-        description: "Two-sided marketplace using Next.js (SSR) and Firebase Auth. Implemented AI-powered resume parsing for job matching.",
+        title: "Distributed Job Queue — Redis-Backed Async Processing",
+        tech: "Redis | Node.js | System Design",
+        description: "Designed a production-grade async job processing system handling batch, delayed, and event-driven workloads with idempotency guarantees and race-condition-safe execution in a distributed environment.",
+        link: ""
+    },
+    {
+        title: "WebPanda — Multi-Tenant AI Marketplace Platform",
+        tech: "Next.js | Multi-Tenancy | Firebase | AWS S3 | OpenAI | RAG",
+        description: "Architected multi-tenant SaaS platform serving multiple branded web apps from a single codebase with isolated data. Built WebPanda.AI with LLM-based resume parsing, RAG matching, and direct-to-S3 presigned URL uploads.",
         link: "http://webpanda.ai"
+    },
+    {
+        title: "POS & Operations ERP Suite",
+        tech: "Next.js | Prisma | MySQL | Socket.io",
+        description: "Built a real-time point-of-sale and inventory ERP for restaurants with live table state, kitchen order printers, and analytics, synchronized across terminals via WebSockets.",
+        link: "https://restaurant-management-system.sahilumraniya.dev/"
+    },
+    {
+        title: "ReplyMe — AI-Powered Customer Support Platform",
+        tech: "Conversational AI | RAG | Rasa",
+        description: "Built an AI-driven customer support chatbot using Rasa and retrieval-augmented generation pipelines. Enabled domain-specific question answering by indexing structured and unstructured knowledge bases.",
+        link: ""
     }
 ];
 
 const SKILL_CATEGORIES = [
-    { title: "Frontend", skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "MUI"] },
-    { title: "Backend", skills: ["Node.js", "Express.js", "Feathers.js", "Spring Boot"] },
-    { title: "AI / ML", skills: ["Generative AI", "LLMs", "RAG", "Prompt Eng.", "Conversational AI"] },
-    { title: "Databases", skills: ["MongoDB", "PostgreSQL", "MySQL", "Redis"] },
-    { title: "DevOps", skills: ["Git", "Docker", "AWS", "Jenkins"] }
+    { title: "Frontend", skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML", "CSS", "MUI"] },
+    { title: "Backend", skills: ["Node.js", "Express.js", "Feathers.js", "REST APIs", "WebSockets (Socket.io)", "Spring Boot"] },
+    { title: "AI / ML", skills: ["Generative AI", "LLMs", "RAG", "LangChain", "Prompt Engineering", "Conversational AI (Rasa)"] },
+    { title: "DevOps / Cloud", skills: ["Docker", "AWS (S3, EC2)", "Linux", "systemd", "Caddy", "CI/CD", "Git", "Vercel", "Netlify"] },
+    { title: "Databases", skills: ["MongoDB", "PostgreSQL", "MySQL", "Oracle SQL", "Redis", "Prisma"] }
 ];
 
 const EDUCATION = {

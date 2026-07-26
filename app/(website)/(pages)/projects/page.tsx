@@ -81,6 +81,18 @@ const PROJECTS = [
         color: "text-purple-500 bg-purple-500/10"
     },
     {
+        title: "Self-Hosted Server Management Platform",
+        tech: ["Next.js", "MongoDB", "systemd", "Caddy"],
+        tag: "DevOps",
+        desc: "Internal platform to manage self-hosted infrastructure: process supervision via systemd, reverse proxy & TLS via Caddy, and Next.js control panel.",
+        github: "https://github.com/Sahilumraniya",
+        host: "https://server.sahilumraniya.dev/",
+        challenge: "Automating process supervision and SSL lifecycle management safely across cloud server environments.",
+        featured: true,
+        icon: Terminal,
+        color: "text-cyan-500 bg-cyan-500/10"
+    },
+    {
         title: "Redis Queue Processor",
         tech: ["Redis", "Node.js", "System Design"],
         tag: "Backend",
@@ -138,6 +150,17 @@ const PROJECTS = [
     },
 
     // 3. AI & Python
+    {
+        title: "ReplyMe — AI Customer Support",
+        tech: ["Conversational AI", "RAG", "Rasa", "Python"],
+        tag: "AI/ML",
+        desc: "AI-driven customer support platform built with Rasa framework and RAG pipelines. Enables domain-specific QA by indexing structured/unstructured knowledge bases.",
+        github: "https://github.com/Sahilumraniya",
+        host: "#",
+        challenge: "Indexing and retrieving structured and unstructured knowledge bases for accurate domain-specific question answering.",
+        icon: BrainCircuit,
+        color: "text-purple-500 bg-purple-500/10"
+    },
     {
         title: "AI Maze Solver",
         tech: ["Python", "Pygame", "A* Algo"],
