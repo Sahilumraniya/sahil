@@ -21,6 +21,18 @@ import Link from 'next/link';
 const PROJECTS = [
     // 1. Featured / High Priority
     {
+        title: "Enterprise Multi-Service Platform",
+        tech: ["React", "Node.js", "Express", "MongoDB"],
+        tag: "Full Stack",
+        desc: "Full-scale enterprise multi-service web application suite including custom landing engines, modular admin dashboards, and service booking modules.",
+        github: "https://github.com/Sahilumraniya",
+        host: "https://github.com/Sahilumraniya",
+        challenge: "Architecting modular, re-usable React & Express component systems across multiple specialized client applications.",
+        featured: true,
+        icon: Layout,
+        color: "text-pink-500 bg-pink-500/10"
+    },
+    {
         title: "Retro Table",
         tech: ["React", "TypeScript", "NPM"],
         tag: "Tools",
@@ -45,16 +57,28 @@ const PROJECTS = [
         color: "text-indigo-500 bg-indigo-500/10"
     },
     {
-        title: "Get Hired Marketplace",
-        tech: ["Next.js", "Firebase", "GenAI"],
+        title: "POS & Operations ERP Suite",
+        tech: ["Next.js", "Prisma", "MySQL", "Socket.io"],
         tag: "Full Stack",
-        desc: "Two-sided freelance marketplace connecting talent with agencies. Features AI-powered resume parsing and matching.",
+        desc: "Real-time Point of Sale (POS) and inventory ERP management system with live table state, automated order printers, and analytics.",
         github: "https://github.com/Sahilumraniya",
-        host: "https://gethiredat.vercel.app",
-        challenge: "Mapping unstructured resume data to structured database schemas using LLMs.",
+        host: "#",
+        challenge: "Synchronizing low-latency live order updates across kitchen screens and cashier terminals via WebSocket connections.",
         featured: true,
-        icon: Layout,
-        color: "text-violet-500 bg-violet-500/10"
+        icon: Server,
+        color: "text-amber-500 bg-amber-500/10"
+    },
+    {
+        title: "S3 Direct-to-Storage Upload Gateway",
+        tech: ["AWS S3", "Node.js", "Presigned URLs", "Next.js"],
+        tag: "Backend",
+        desc: "Zero-server-overhead direct media upload gateway using AWS S3 Presigned URLs with client-side AVIF/WebP image compression.",
+        github: "https://github.com/Sahilumraniya",
+        host: "#",
+        challenge: "Bypassing app server RAM and bandwidth constraints by issuing secure 30-second single-use upload tokens directly to AWS S3.",
+        featured: true,
+        icon: Server,
+        color: "text-purple-500 bg-purple-500/10"
     },
     {
         title: "Redis Queue Processor",

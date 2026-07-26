@@ -274,6 +274,41 @@
             linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
     }
 
+    /* 9. Retro Engine Design System */
+    [data-design="retroengine"] {
+        --ds-card-bg: #121019;
+        --ds-card-border: 2px solid #ff2a85;
+        --ds-card-shadow: 0 0 15px rgba(255, 42, 133, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.1);
+        --ds-radius: 0.25rem;
+        --ds-text: #00f0ff;
+        --ds-btn-bg: linear-gradient(90deg, #ff2a85 0%, #7b2cbf 100%);
+        --ds-btn-text: #ffffff;
+        --ds-btn-radius: 0.25rem;
+        --ds-btn-border: 1px solid #00f0ff;
+        --ds-btn-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+
+    .dark[data-design="retroengine"] {
+        --ds-card-bg: #090611;
+        --ds-card-border: 2px solid #ff2a85;
+        --ds-card-shadow: 0 0 20px rgba(255, 42, 133, 0.4), inset 0 0 20px rgba(0, 240, 255, 0.15);
+        --ds-text: #00f0ff;
+        --ds-btn-bg: linear-gradient(90deg, #ff2a85 0%, #9d4edd 100%);
+        --ds-btn-text: #ffffff;
+        --ds-btn-border: 1px solid #00f0ff;
+        --ds-btn-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+    }
+
+    [data-design="retroengine"] .ds-card {
+        border-radius: 4px;
+        box-shadow: 0 0 15px rgba(255, 42, 133, 0.3), 4px 4px 0px #00f0ff;
+    }
+
+    [data-design="retroengine"] .ds-btn:hover {
+        box-shadow: 0 0 20px rgba(255, 42, 133, 0.8), 0 0 10px rgba(0, 240, 255, 0.8);
+        transform: translateY(-1px);
+    }
+
     html {
         @apply scroll-smooth;
     }

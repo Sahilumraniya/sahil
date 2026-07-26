@@ -12,6 +12,8 @@ const options: { value: DesignSystem; label: string }[] = [
     { value: "claymorphism", label: "Claymorphism" },
     { value: "minimalism", label: "Minimalism" },
     { value: "liquidglass", label: "Liquid Glass" },
+    { value: "precision-ai", label: "Precision AI" },
+    { value: "retroengine", label: "Retro Engine" },
 ];
 
 export function DesignSystemSelector({ align = "right" }: { align?: "left" | "right" }) {

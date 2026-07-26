@@ -46,17 +46,17 @@ const FEATURED_PROJECTS = [
         tag: "Developer Tool"
     },
     {
-        title: "Redis Queue",
-        tech: ["Redis", "Node.js", "System Design"],
-        desc: "Production-grade async job processor handling 10k+ events/hour with reliable retry logic.",
-        link: "https://github.com/sahilumraniya",
-        github: "https://github.com/sahilumraniya",
-        icon: Server,
-        gradient: "from-emerald-500 to-teal-500",
-        lightBg: "bg-emerald-50",
-        darkBg: "dark:bg-emerald-950/30",
-        accent: "text-emerald-600 dark:text-emerald-400",
-        tag: "Backend System"
+        title: "Enterprise Multi-Service Suite",
+        tech: ["React", "Node.js", "Express", "MongoDB"],
+        desc: "Comprehensive enterprise multi-service platform featuring high-conversion landing engines, server task queues, booking workflows, and responsive admin analytics dashboards.",
+        link: "https://github.com/Sahilumraniya",
+        github: "https://github.com/Sahilumraniya",
+        icon: Layout,
+        gradient: "from-pink-500 to-rose-500",
+        lightBg: "bg-pink-50",
+        darkBg: "dark:bg-pink-950/30",
+        accent: "text-pink-600 dark:text-pink-400",
+        tag: "Enterprise Suite"
     },
 ];
 

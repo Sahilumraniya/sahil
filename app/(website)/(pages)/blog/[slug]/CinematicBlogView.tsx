@@ -28,6 +28,7 @@ interface BlogPost {
 
 export default function CinematicBlogView({ blog }: { blog: BlogPost }) {
     const ref = useRef(null);
+    const [imgError, setImgError] = useState(false);
     const { scrollYProgress, scrollY } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -50,44 +51,18 @@ export default function CinematicBlogView({ blog }: { blog: BlogPost }) {
 
     // Helper to merge adjacent code blocks
     const processContent = (content: string) => {
-        // Regex to find adjacent code blocks:
-        // ```lang
-        // code
-        // ```
-        // [whitespace/newlines]
-        // ```lang
-        // code
-        // ```
-        // It captures: 
-        // 1. Language of first block
-        // 2. Content of first block
-        // 3. Language of second block (must match first or be empty/text)
-        // 4. Content of second block
-
-
         let processed = content;
-
-        // 1. Unescape headers (Fix for Tiptap escaping markdown headers as text)
-        // Replaces "\## " with "## " at start of lines
         processed = processed.replace(/^\\(#+)\s/gm, '$1 ');
-
-        // 2. Merge Adjacent Code Blocks
         const regex = /```(\w*)\n([\s\S]*?)```\s*```(\w*)\n([\s\S]*?)```/g;
-
-        // Iteratively merge until no more adjacent matches found
         let match;
         while ((match = regex.exec(processed)) !== null) {
-            // Only merge if languages match or one is missing (simplification)
             const lang1 = match[1] || '';
             const lang2 = match[3] || '';
 
             if (lang1 === lang2 || !lang1 || !lang2) {
                 const merged = "```" + (lang1 || lang2) + "\n" + match[2] + "\n" + match[4] + "```";
                 processed = processed.replace(match[0], merged);
-                // Reset regex to start from top after replacement to handle 3+ blocks
                 regex.lastIndex = 0;
-            } else {
-                // If languages differ significantly, maybe don't merge, but for now we skip
             }
         }
         return processed;
@@ -98,23 +73,29 @@ export default function CinematicBlogView({ blog }: { blog: BlogPost }) {
 
             {/* Reading Progress Bar */}
             <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-600 to-indigo-600 origin-left z-50 shadow-[0_0_10px_rgba(124,58,237,0.5)]"
+                className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-600 via-indigo-500 to-cyan-500 origin-left z-50 shadow-[0_0_12px_rgba(124,58,237,0.6)]"
                 style={{ scaleX }}
             />
 
             {/* Cinematic Hero Section - Full Screen Parallax */}
-            <div className="relative w-full h-[85vh] overflow-hidden flex items-center justify-center">
+            <div className="relative w-full h-[75vh] min-h-[550px] overflow-hidden flex items-center justify-center">
                 <motion.div
                     className="absolute inset-0 z-0"
                     style={{ y: yParallax, opacity: opacityHero }}
                 >
-                    {blog.image ? (
-                        <Image src={blog.image} alt={blog.title} fill className="object-cover scale-105" priority />
+                    {blog.image && !imgError ? (
+                        <Image 
+                            src={blog.image} 
+                            alt={blog.title} 
+                            fill 
+                            className="object-cover scale-105" 
+                            priority 
+                            onError={() => setImgError(true)}
+                        />
                     ) : (
-                        <div className="w-full h-full bg-gradient-to-b from-slate-900 via-slate-800 to-[#0a0a0a]" />
+                        <div className="w-full h-full bg-gradient-to-br from-violet-950 via-slate-900 to-[#0a0a0a]" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent" />
-                    <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-black/30" />
                 </motion.div>
 
                 <motion.div
@@ -199,24 +180,62 @@ export default function CinematicBlogView({ blog }: { blog: BlogPost }) {
 
                             {/* Pro Typography Content */}
                             {/* Pro Typography Content */}
-                            <article className="prose prose-xl dark:prose-invert max-w-none 
-                                prose-headings:font-black prose-headings:tracking-tighter prose-headings:text-slate-900 dark:prose-headings:text-white prose-headings:leading-tight
-                                prose-p:text-slate-600 dark:prose-p:text-slate-300 prose-p:leading-8 prose-p:font-light prose-p:text-[1.125rem]
+                            <article className="prose prose-lg md:prose-xl dark:prose-invert max-w-none 
+                                prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-slate-900 dark:prose-headings:text-white
+                                prose-h1:text-3xl md:prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-12 prose-h1:pb-3 prose-h1:border-b prose-h1:border-slate-200 dark:prose-h1:border-white/10
+                                prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-5 prose-h2:mt-10 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-200/60 dark:prose-h2:border-white/5
+                                prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
+                                prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-p:leading-relaxed prose-p:text-[1.05rem] prose-p:my-5
                                 prose-strong:text-slate-900 dark:prose-strong:text-white prose-strong:font-bold
-                                prose-a:text-violet-600 dark:prose-a:text-violet-400 prose-a:font-semibold prose-a:no-underline prose-a:border-b prose-a:border-violet-500/30 dark:prose-a:border-violet-400/30 hover:prose-a:border-violet-600 dark:hover:prose-a:border-violet-400 transition-all
-                                prose-blockquote:border-l-2 prose-blockquote:border-violet-500 prose-blockquote:bg-slate-50 dark:prose-blockquote:bg-white/5 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:not-italic prose-blockquote:text-slate-700 dark:prose-blockquote:text-slate-200
-                                prose-code:text-violet-600 dark:prose-code:text-violet-300 prose-code:bg-violet-100 dark:prose-code:bg-violet-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
-                                prose-pre:bg-slate-900 dark:prose-pre:bg-[#111] prose-pre:border prose-pre:border-slate-800 dark:prose-pre:border-white/10 prose-pre:shadow-2xl prose-pre:rounded-2xl prose-pre:p-0
-                                prose-img:rounded-xl prose-img:shadow-2xl prose-img:border prose-img:border-slate-200 dark:prose-img:border-white/5 prose-img:w-full
-                                prose-hr:border-slate-200 dark:prose-hr:border-white/5 prose-hr:my-16
-                                prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-table:border prose-table:border-slate-200 dark:prose-table:border-white/10 prose-table:rounded-xl prose-table:overflow-hidden
-                                prose-th:px-6 prose-th:py-4 prose-th:text-left prose-th:bg-slate-100 dark:prose-th:bg-white/5 prose-th:border-b prose-th:border-slate-300 dark:prose-th:border-white/10 prose-th:text-slate-900 dark:prose-th:text-white prose-th:font-bold prose-th:uppercase prose-th:text-xs prose-th:tracking-wider
-                                prose-td:px-6 prose-td:py-4 prose-td:border-b prose-td:border-slate-200 dark:prose-td:border-white/5 prose-td:text-slate-700 dark:prose-td:text-slate-300
+                                prose-ul:my-6 prose-ul:space-y-3 prose-ul:list-disc prose-ul:pl-6
+                                prose-ol:my-6 prose-ol:space-y-3 prose-ol:list-decimal prose-ol:pl-6
+                                prose-li:text-slate-700 dark:prose-li:text-slate-300 prose-li:leading-relaxed prose-li:my-1.5
+                                prose-a:text-violet-600 dark:prose-a:text-violet-400 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline transition-all
+                                prose-blockquote:border-l-4 prose-blockquote:border-violet-500 prose-blockquote:bg-violet-50/50 dark:prose-blockquote:bg-white/[0.03] prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:my-6
+                                prose-code:text-violet-600 dark:prose-code:text-violet-300 prose-code:bg-violet-100/80 dark:prose-code:bg-violet-500/15 prose-code:px-2 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
+                                prose-hr:border-slate-200 dark:prose-hr:border-white/10 prose-hr:my-10
                             ">
                                 <ReactMarkdown
                                     rehypePlugins={[rehypeSlug, rehypeRaw]}
                                     remarkPlugins={[remarkGfm]}
                                     components={{
+                                        table({ children }: any) {
+                                            return (
+                                                <div className="my-8 w-full overflow-x-auto rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-xl bg-white dark:bg-[#111827]/60 backdrop-blur-sm">
+                                                    <table className="w-full text-left border-collapse min-w-[600px]">
+                                                        {children}
+                                                    </table>
+                                                </div>
+                                            );
+                                        },
+                                        thead({ children }: any) {
+                                            return (
+                                                <thead className="bg-slate-100/90 dark:bg-white/[0.06] border-b border-slate-200 dark:border-white/10">
+                                                    {children}
+                                                </thead>
+                                            );
+                                        },
+                                        th({ children }: any) {
+                                            return (
+                                                <th className="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-violet-300 font-mono">
+                                                    {children}
+                                                </th>
+                                            );
+                                        },
+                                        tr({ children }: any) {
+                                            return (
+                                                <tr className="border-b border-slate-100 dark:border-white/[0.04] transition-colors hover:bg-violet-50/50 dark:hover:bg-white/[0.02]">
+                                                    {children}
+                                                </tr>
+                                            );
+                                        },
+                                        td({ children }: any) {
+                                            return (
+                                                <td className="px-6 py-4.5 text-sm md:text-base text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
+                                                    {children}
+                                                </td>
+                                            );
+                                        },
                                         code({ node, inline, className, children, ...props }: any) {
                                             const match = /language-(\w+)/.exec(className || '')
                                             const lang = match ? match[1] : 'text'

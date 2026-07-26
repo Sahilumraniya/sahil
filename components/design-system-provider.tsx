@@ -11,7 +11,8 @@ export type DesignSystem =
     | "minimalism"
     | "liquidglass"
     | "framermotion"
-    | "precision-ai";
+    | "precision-ai"
+    | "retroengine";
 
 interface DesignSystemContextProps {
     designSystem: DesignSystem;
